@@ -1,0 +1,33 @@
+<div id="filter-panel" [class.active]="showFilterPanel">
+  <div class="wrapper">
+    <div class="title">
+      <h5>筛选</h5>
+      <span (click)="_emitClose()">&times;</span>
+    </div>
+
+    <!--筛选表单-->
+    <form [formGroup]="formModel" (submit)="onSubmit($event)">
+      <div class="filter-item" style="margin-top: 25px;">
+        <div class="label">最大乘员数：{{max_seats}}人以上(含{{max_seats}}人)</div>
+        <hq-slider [hqMin]="2" [hqMax]="10" [hqMarks]="marks_people" formControlName="max_seats" [(ngModel)]="max_seats"></hq-slider>
+      </div>
+
+      <!--<div class="filter-item">
+        <div class="label">车长：{{length[0]}}米-{{length[1]}}米</div>
+        <hq-slider [hqRange]="true" [hqMin]="4" [hqMax]="12" [hqMarks]="marks_carLen" [hqDefaultValue]="[6, 8]" formControlName="length" [(ngModel)]="length"></hq-slider>
+      </div>-->
+
+      <div class="filter-item">
+        <div class="label">起居配置：<span>（支持多选，再次点击可取消选择）</span></div>
+        <hq-checkbox-group [hqType]="'checkbox-btn'" formControlName="configs" [(ngModel)]="checkOptions"></hq-checkbox-group>
+      </div>
+      <hr />
+      <p>当前有<b>{{save_carlist_filter.length}}</b>辆车</p>
+
+      <div class="btns">
+        <hq-button (click)="onReset($event)">重置</hq-button>
+        <hq-button>确定</hq-button>
+      </div>
+    </form>
+  </div>
+</div>

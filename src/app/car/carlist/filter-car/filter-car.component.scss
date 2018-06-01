@@ -1,0 +1,95 @@
+@import "../../../../styles";
+#filter-panel{
+  width: 100%;
+  max-width: 1200px;
+  height:0;
+  position: fixed;
+  top:70px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  background-color: #fff;
+  @include transit(height);
+  overflow: hidden;
+  z-index: 1;
+
+  .wrapper{
+    @include setWidth(95.2%);
+    max-height: 500px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+
+    .title{
+      @include flex-box(null, space-between, center, null);
+      height:50px;
+      border-bottom: 1px solid;
+      @media screen and (min-width: 375px){
+        height:70px;
+      }
+
+      h5{
+        @include font(18px, rgb(51, 51, 51), 600);
+        @media screen and (min-width: 480px){
+         font-size: 22px;
+        }
+      }
+      span{
+        @include font(25px, #cfcfcf);
+        @media screen and (min-width: 480px){
+          font-size: 30px;
+        }
+      }
+    }
+
+
+    form{
+      .filter-item{
+        margin-top: 35px;
+        .label{
+          @include font(16px, #333);
+          margin-bottom: 15px;
+          @media screen and (min-width: 480px){
+            font-size: 18px;
+            margin-bottom: 20px;
+          }
+
+          span{
+            @include font(12px,rgb(153, 153, 153));
+          }
+        }
+        hq-slider{
+          display: block;
+          @include setWidth(91.4%);
+        }
+        hq-checkbox-group{
+          @include flex-box(null, space-around, null, wrap);
+          width: 100%;
+        }
+      }
+
+      p{
+        margin: 10px 0 15px 0;
+        text-align: center;
+        @media screen and (min-width: 480px){
+          margin: 15px 0 25px 0;
+        }
+
+        b{
+          @include font(20px, rgb(208, 28, 49));
+        }
+      }
+
+      .btns{
+        @include flex-box(null, space-around, null, null);
+        margin-bottom: 20px;
+        hq-button{
+          width: 30.8%;
+        }
+      }
+    }
+  }
+}
+
+#filter-panel.active{
+  height:700px;
+}

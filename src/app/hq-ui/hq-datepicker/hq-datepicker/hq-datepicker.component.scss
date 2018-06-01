@@ -1,0 +1,23 @@
+@import "../../../../styles";
+.hqDate{
+  position: fixed;
+  width: 95%;
+  max-width: 1200px;
+  top:15%;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  z-index: 1;
+  border: 1px solid #D5D5D5;
+  background-color: #fff;
+  opacity: 0;
+  pointer-events:none;
+  border-radius: 5px;
+  @include transit(opacity);
+}
+
+
+.hqDate.show{
+  opacity: 1;
+  pointer-events:auto;
+}

@@ -1,0 +1,37 @@
+@import "../../../../styles";
+//.ant-checkbox-btn-host{margin-right: 10px;}
+
+.ant-checkbox-btn{
+  display: inline-block;
+  width: 100%;
+  max-width: 138px;
+  height:30px;
+  border:1px solid #d9d9d9;
+  color: #333;
+  text-align: center;
+  line-height: 30px;
+  cursor: pointer;
+  margin-bottom: 15px;
+  @include transit();
+
+  //&:hover{
+  //  border-color: #108ee9;
+  //  color: #108ee9;
+  //}
+
+  //.ant-checkbox-btn-input{
+  //  display: none;
+  //}
+}
+
+.ant-checkbox-btn-checked{
+  @extend .ant-checkbox-btn;
+  background-color: rgba(40, 171, 227, 1);
+}
+
+.ant-checkbox-btn-disabled{
+  @extend .ant-checkbox-btn;
+  border-color: #d9d9d9;
+  color: #d9d9d9;
+  cursor: not-allowed;
+}

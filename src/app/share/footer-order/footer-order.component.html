@@ -1,0 +1,152 @@
+<div id="footer-order">
+  <div class="order-info" (click)="showPriceListDialog = true;">
+    <div class="price">
+      <div><b>{{car_info.currency_symbol}}{{allPrice | number:'1.1-1'}}</b><span>(日均{{car_info.currency_symbol}}{{car_info.daily_rents | number:'1.0-0'}})</span></div>
+      <span>明细</span>
+    </div>
+  </div>
+
+  <div class="next-step" (click)="ording(nextPageType)">
+    <span>下一步</span>
+    <span>{{nextPageType === 'order' ? '填写信息' : '去支付'}}</span>
+  </div>
+</div>
+
+
+
+<!--明细弹窗-->
+<hq-modal [hqShow]="showPriceListDialog" [hqTitle]="'价格明细'" (hqCloseModal)="showPriceListDialog = false;">
+  <div id="price">
+    <div class="car-price">
+      <h4>车辆租金<span>({{search_data.beginDate | date: 'yyyy.MM.dd'}}-{{search_data.endDate | date: 'yyyy.MM.dd'}})</span></h4>
+      <div class="list">
+        <div class="item" *ngFor="let item of car_info.price_list">
+          <!--日常费用-->
+          <div class="daily" *ngIf="item.days">
+            <span>{{car_info.currency_symbol}}{{item.daily_price | number:'1.1-1'}}/日</span>
+            <span>{{item.days}}日</span>
+          </div>
+
+          <!--周末或节假日附加费-->
+          <div class="daily" *ngIf="item.add_retunrn_fee">
+            <span>{{item.add_retunrn_fee === 'weekend' ? '周末附加费' : '节假日附加费'}}</span>
+          </div>
+
+          <!--超时费-->
+          <div class="daily" *ngIf="item.hours">
+            <span>{{car_info.currency_symbol}}{{item.hourly_price | number:'1.1-1'}}/时</span>
+            <span>{{item.hours}}小时</span>
+          </div>
+
+
+          <div class="total">{{car_info.currency_symbol}}{{item.total | number:'1.1-1'}}</div>
+        </div>
+      </div>
+    </div>
+
+    <!--附加费用-->
+    <div class="other-price" *ngIf="user_packages.length > 0">
+      <h4>额外费用</h4>
+      <div class="list">
+
+        <div class="item" *ngFor="let pack of user_packages;">
+          <div class="name">{{pack.name}}</div>
+          <div class="detail">
+            <div class="count">
+              <span>{{car_info.currency_symbol}}{{pack.price | number:'1.1-1'}}/件</span>
+              <span>数量：{{pack.count}}</span>
+            </div>
+            <div class="total">{{car_info.currency_symbol}}{{pack.count * pack.price | number:'1.1-1'}}</div>
+          </div>
+
+          <!--<div class="price">{{car_info.currency_symbol}}{{pack.count * pack.price | number:'1.1-1'}}</div>-->
+        </div>
+      </div>
+    </div>
+
+
+    <!--异地还车费-->
+    <div class="oneway_fee" *ngIf="car_info.oneway_fee && car_info.oneway_fee.total > 0">
+      <h4>异地还车费</h4>
+      <div class="list">
+        <div class="item">
+          <div class="name">{{car_info.oneway_fee.description}}</div>
+          <div class="price">{{car_info.currency_symbol}}{{car_info.oneway_fee.total | number:'1.1-1'}}</div>
+        </div>
+      </div>
+    </div>
+
+    <!--折扣-->
+    <div class="discount" *ngIf="car_info.discount && car_info.discount.deduct_amount > 0">
+      <h4>折扣</h4>
+
+      <div class="list"><!--循环-->
+        <div class="item" *ngFor="let discount of car_info.discount.list">
+          <div class="name">{{discount.name}}</div>
+          <div class="price">{{car_info.currency_symbol}}{{car_info.discount.deduct_amount | number:'1.1-1'}}</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="special_fee" *ngIf="car_info.special_fee && car_info.special_fee.total > 0">
+      <h4>特殊费用</h4>
+
+      <div class="list"><!--循环-->
+        <div class="item" *ngFor="let item of car_info.special_fee.list">
+          <div class="name">{{item.name}}</div>
+          <div class="price">{{car_info.currency_symbol}}{{item.amount | number:'1.1-1'}}</div>
+        </div>
+      </div>
+    </div>
+
+
+    <!--其它强制收费-->
+    <!--<div class="other_fee">-->
+      <!--<h4>其它费用</h4>-->
+
+      <!--<div class="list">&lt;!&ndash;循环&ndash;&gt;-->
+        <!--<div class="item">-->
+          <!--<div class="name">车辆交接服务费——强制</div>-->
+          <!--<div class="other_fee_price">￥30 x1件</div>-->
+        <!--</div>-->
+
+        <!--<div class="item">-->
+          <!--<div class="name">清洗费——强制</div>-->
+          <!--<div class="other_fee_price">￥200 x1件</div>-->
+        <!--</div>-->
+      <!--</div>-->
+
+      <!--<div class="count">-->
+        <!--<div>总计：<b>￥230</b></div>-->
+      <!--</div>-->
+    <!--</div>-->
+
+
+    <div class="tax" *ngIf="car_info.tax !== 0;">
+      <h4>州税</h4>
+      <div class="list">
+        <div class="item">
+          <div class="name">州税</div>
+          <div class="tax_val">{{car_info.tax | percent}}</div>
+        </div>
+      </div>
+    </div>
+
+    <!--总计和定金-->
+    <div class="costAll">
+      <div class="cost">总计：<span>{{car_info.currency_symbol}}{{allPrice | number: '1.1-1'}}</span></div>
+      <div class="prepay">预付定金：<span>{{car_info.currency_symbol}}{{allPrice / 10 | number: '1.1-1'}}</span></div>
+    </div>
+
+
+    <div class="des">
+      <h4>预付定金说明</h4>
+      <p>{{country.deposit_account}}</p>
+    </div>
+  </div>
+</hq-modal>
+
+
+<!--加载中-->
+<!--[hqTip]="'请稍后...'"-->
+<hq-spin [hqShow]="showLoading"></hq-spin>

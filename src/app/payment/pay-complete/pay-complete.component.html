@@ -1,0 +1,28 @@
+<div id="pay-complete" class="center">
+  <app-search-info [pageType]="'pay'" [text]="'订单处理中'"></app-search-info>
+
+  <div class="order-status">
+    <div class="wrapper">
+      <div class="title">
+        <div class="icon"><img src="../../../assets/payment/u992.png" /></div>
+        <div class="text">
+          <p>支付完成，正在处理订单</p>
+          <span (click)="orderDetail()">查看订单&gt;&gt;</span>
+        </div>
+      </div>
+
+      <!--进度-->
+      <div class="progress">
+        <hq-progress [hqValue]="currentProgress"></hq-progress>
+        <ul>
+          <li *ngFor="let item of progressTxt" [class.through]="item.value < currentProgress" [class.current]="item.value === currentProgress">{{item.label}}</li>
+        </ul>
+      </div>
+      <div class="tip">我们会在72小时之内确认车辆可用状态并通过短信、邮件通知您，请您留意相关信息</div>
+    </div>
+  </div>
+</div>
+
+
+<!--加载中-->
+<hq-spin [hqShow]="showLoading"></hq-spin>

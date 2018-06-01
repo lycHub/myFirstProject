@@ -1,0 +1,63 @@
+@import "../../../../styles";
+#personal{
+  //.top{
+  //  height:124px;
+  //  overflow: hidden;
+  //  background: url(../../../../assets/user/bg.png);
+  //  .username{
+  //    margin-left: 30px;
+  //    margin-top: 38px;
+  //    @include font(16px,#fff);
+  //  }
+  //}
+
+  .orders{
+    @include setWidth(95%);
+    margin-top: 30px;
+    .order-type{
+      @include flex-box(null, space-between, null, null);
+      >div{
+        width: 50%;
+        cursor: pointer;
+        .icon{
+          width: 100%;
+          text-align: center;
+          img{
+            width: 35%;
+          }
+        }
+        span{
+          display: block;
+          @include font(18px,#999,bold);
+          margin-top: 10px;
+          text-align: center;
+        }
+        &:last-of-type span{color: #ccc;}
+      }
+      .car{
+        .icon{
+          border-right:1px solid;
+        }
+      }
+    }
+
+
+    .order-list{
+      margin-top: 30px;
+      .order-item{
+        padding: 15px 0;
+        border-radius: 5px;
+        margin-bottom: 20px;
+        @include box-shadow(0 0 15px #d4d4d4);
+        background-color: #fff;
+
+        .wrapper{
+          @include setWidth(90.5%);
+          app-order-brief{
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+}

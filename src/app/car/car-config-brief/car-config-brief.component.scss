@@ -1,0 +1,25 @@
+@import "../../../styles";
+.configs{
+  @include flex-box(null,space-between,center,null);
+  padding: 10px 0;
+  cursor: pointer;
+  ul{
+    @include flex-box(null,space-between,null,null);
+    width: 77%;
+
+    li{
+      height:20px;
+      font-size: 12px;
+
+      hq-icon{
+        display: inline-block;
+        width: 20px;
+        height:20px;
+      }
+      span{
+        vertical-align: super;
+        margin-left: 3px;
+      }
+    }
+  }
+}

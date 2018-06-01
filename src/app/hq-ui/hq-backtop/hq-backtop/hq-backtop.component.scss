@@ -1,0 +1,33 @@
+.hq-backUp{
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  height: 40px;
+  width: 40px;
+  z-index: 1;
+  cursor: pointer;
+
+
+  .hq-backUp-wrap{
+    height: 40px;
+    width: 40px;
+    border-radius: 20px;
+    background-color: rgba(64,64,64,.4);
+    color: #fff;
+    text-align: center;
+
+    .hq-backUp-icon{
+      font-size: 42px;
+      line-height: 100px;
+      margin: 10px 0;
+      color: #333;
+      -webkit-transition: font-size 0.25s ease-out 0s;
+      -moz-transition: font-size 0.25s ease-out 0s;
+      transition: font-size 0.25s ease-out 0s;
+
+      &:after{
+        content: "\e609";
+      }
+    }
+  }
+}

@@ -1,0 +1,39 @@
+@import "../../../../styles";
+#login-phone{
+  app-form-template{
+    form{
+      @include setWidth(75%,40px);
+
+      .input{
+        .phone-belong{
+          position: relative;
+          span{
+            position: absolute;
+            right: 0;
+            @include font(14px,#333);
+            @media screen and (min-width:480px){
+              font-size: 16px;
+              bottom: 16px;
+            }
+          }
+        }
+
+        .phone{
+          @extend .phone-belong;
+          span{
+            color: #28ABE3;
+          }
+          span.disabled{
+            color: #ccc;
+          }
+        }
+      }
+
+      hq-button{
+        display: block;
+        @include setWidth(83.3%);
+        margin-top:100px;
+      }
+    }
+  }
+}

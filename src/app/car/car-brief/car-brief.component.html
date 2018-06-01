@@ -1,0 +1,17 @@
+<div class="name-tag">
+  <h3>{{currentCar.name}}</h3>
+  <div class="tags">
+    <hq-tag>{{currentCar.driver_license}}</hq-tag>
+    <hq-tag>{{currentCar.transmission_type}}</hq-tag>
+    <hq-tag>{{currentCar.fuel_type}}</hq-tag>
+    <hq-tag>{{currentCarType}}</hq-tag>
+  </div>
+  <div class="rate" [style.width]="rateWidth">
+    <div class="sc">
+      <span class="score">{{currentCar.score}}评分</span>
+      <span *ngIf="comment">{{comment}}+评价</span>
+    </div>
+    <div class="suggest">建议{{currentCar.best_seats}}人出行使用</div>
+    <div class="ads" *ngIf="ads">{{ads}}</div>
+  </div>
+</div>

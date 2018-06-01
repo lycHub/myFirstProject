@@ -1,0 +1,25 @@
+<div id="about" class="center">
+  <div class="header" (click)="back()">
+    <img src="../../../assets/common/img_return.png" alt="返回" />
+    <h2>关于环球房车</h2>
+  </div>
+
+  <div class="logo">
+    <img src="../../../assets/aboutus/img_logo.png" alt="返回" />
+  </div>
+
+  <div class="aboutus" routerLink="./aboutus/us">
+    <div class="aboutus-wrap">
+      <h3>关于我们</h3>
+      <img src="../../../assets/common/img_arrive.png" />
+    </div>
+  </div>
+
+
+  <div class="business">
+    <app-business *ngFor="let business of business;" [businessItem]="business"></app-business>
+  </div>
+</div>
+
+
+<router-outlet></router-outlet>

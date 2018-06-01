@@ -1,0 +1,16 @@
+<div class="hq-tabs">
+  <div class="hq-tabs-header">
+    <div class="hq-tabs-labels" [style.width]="hqLabelWrapWidth">
+      <div class="hq-tabs-label" #label *ngFor="let tab of _tabs; let x = index;" (click)="clickTab(x)" [ngStyle]="hqLabelStyle" [style.color]="tab.active ? activedColor : hqLabelStyle.color">{{tab.name}}</div>
+    </div>
+
+    <!--高亮线-->
+    <div class="hq-tabs-line" #line [style.width]="hqLabelStyle.width" [style.background-color]="activedColor"></div>
+  </div>
+
+  <!--content-->
+  <div class="hq-tabs-wrapper" #content>
+    <ng-content></ng-content>
+  </div>
+
+</div>

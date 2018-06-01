@@ -1,0 +1,41 @@
+@import "../../../styles";
+form{
+  margin-top: 15px;
+
+  .submit{
+    @include setWidth(72.4%);
+    height:40px;
+    border-radius: 5px;
+    padding: 4px;
+    background-color: rgba(40, 171, 227, 1);
+    margin-top: 30px;
+    cursor: pointer;
+    @media screen and(min-width: 375px){
+      height:50px;
+    }
+    .wrapper{
+      @include flex-box(null,center,null,null);
+      height:100%;
+      border:1px dashed #fff;
+      border-radius: 5px;
+      button{
+        //position: relative;
+        @include setWidth(100%);
+        @include font(16px, #fff);
+        @media screen and(min-width: 375px){
+          font-size: 18px;
+        }
+        text-align: center;
+        span{
+          @include font(16px,#fff);
+          margin-left: 15px;
+          vertical-align: 5%;
+          @media screen and(min-width: 375px){
+            font-size: 20px;
+            vertical-align: 0;
+          }
+        }
+      }
+    }
+  }
+}

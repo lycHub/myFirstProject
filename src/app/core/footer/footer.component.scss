@@ -1,0 +1,29 @@
+@import "../../../styles";
+#footer{
+  margin-top: 20px;
+  .wrap{
+    width: 80%;
+    margin: 0 auto;
+    .connect{
+      @include flex-box(null, space-around, center, null);
+      color: #29abe2;
+      a{
+        @include font(12px, inherit);
+        img{
+          width: 13px;
+          height:13px;
+          margin-right: 5px;
+        }
+      }
+      span{
+        color: inherit;
+      }
+    }
+    >a{
+      display: block;
+      @include font(12px, #999);
+      text-align: center;
+      padding: 10px 0;
+    }
+  }
+}

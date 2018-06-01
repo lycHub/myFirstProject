@@ -1,0 +1,39 @@
+<div class="input-wrapper">
+  <div class="input-label clearfix">
+    <span class="label" [class.show]="showLabel" [style.color]="hqLabelColor">{{hqLabel}}</span>
+    <span class="week" *ngIf="hqType === 'calendar'">周{{week}}</span>
+  </div>
+  <div class="input-control"
+       [class.small]="hqSize === 'small'"
+       [class.normal]="hqSize === 'normal'"
+       [class.large]="hqSize === 'large'"
+       [class.focus]="_focus"
+       [class.error]="hqError">
+    <input *ngIf="hqType !== 'textarea'"
+      #input
+      [type]="hqType"
+      [style.text-align]="hqAlign"
+      [autofocus]="_focus"
+      [value]="_value"
+      [disabled]="hqDisabled"
+      [readonly]="hqReadOnly"
+      placeholder="{{hqPlaceHolder}}"
+      (focus)="_emitFocus($event)"
+      (blur)="_emitBlur($event)"
+       [(ngModel)]="_value"
+       (ngModelChange)="_emitModelChange($event)"/>
+
+    <textarea *ngIf="hqType === 'textarea'"
+      [autofocus]="_focus"
+      [value]="_value"
+      [disabled]="hqDisabled"
+      [readonly]="hqReadOnly"
+      placeholder="{{hqPlaceHolder}}"
+      (focus)="_emitFocus($event)"
+      (blur)="_emitBlur($event)"
+      [(ngModel)]="_value"
+      (ngModelChange)="_emitModelChange($event)">
+    </textarea>
+  </div>
+  <div class="input-error" *ngIf="hqError">{{hqErrorMsg}}</div>
+</div>

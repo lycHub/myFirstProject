@@ -1,0 +1,41 @@
+<div id="detail" class="center">
+  <app-seo-header  [backPath]="'/news'"></app-seo-header>
+
+  <div class="article">
+    <div class="article-wrapper">
+      <h2>{{articles.seo_word.title}}</h2>
+      <div class="author-time">
+        <span>{{articles.seo_word.ctime | date: 'yyyy.MM.dd'}}</span> <span routerLink="/">环球房车</span>   <!--{{articles.seo_word.username}}-->
+      </div>
+
+      <!--正文-->
+      <div class="content" [innerHTML]="articles.seo_word.content | safeHtml"></div>
+
+      <!--上一篇或下一篇-->
+      <div class="relative" (click)="changeArticle($event)">
+        <span *ngIf="articles.before" [attr.data-id]="articles.before.id">上一篇：{{articles.before.title}}</span>
+        <span *ngIf="articles.after" [attr.data-id]="articles.after.id">下一篇：{{articles.after.title}}</span>
+      </div>
+
+      <hq-breadcrumb></hq-breadcrumb>
+
+
+      <div class="navigate">
+        <hq-button routerLink="/"
+        (hqClick)="showLoading = true"
+        [hqBtnStyle]="{
+        'background-color': '#fff',
+        'color': '#28abe3',
+        'border-color': '#28abe3',
+        'padding': '8px 0',
+        'border-radius': '10px'}">
+          立即预订c照可驾房车<i>&gt;</i>
+        </hq-button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!--加载中-->
+<hq-spin [hqShow]="showLoading"></hq-spin>

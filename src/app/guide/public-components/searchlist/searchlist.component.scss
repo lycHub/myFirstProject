@@ -1,0 +1,12 @@
+@import "../../../../styles";
+hq-scroll{
+  ul{
+    @include setWidth(95%);
+    li{
+      padding: 20px 0;
+      @include font(14px,#070707);
+      border-bottom: 1px solid #efefef;
+      text-indent: 28px;
+    }
+  }
+}

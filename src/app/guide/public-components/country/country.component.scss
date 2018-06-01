@@ -1,0 +1,15 @@
+@import "../../../../styles";
+:host{
+  cursor: pointer;
+}
+.country{
+  @include flex-box(null,null,center,null);
+  .icon{
+    width: 30px;
+    height:23px;
+    margin-right: 5px;
+    img{
+      height:100%;
+    }
+  }
+}

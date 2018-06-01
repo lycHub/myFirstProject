@@ -1,0 +1,105 @@
+<div id="order" class="center">
+  <app-search-info [pageType]="'order'" [text]="'订单信息确认'" [city_data]="search_data"></app-search-info>
+
+  <div class="selected-car">
+    <div class="wrapper">
+      <app-search-info-mid [city_data]="search_data" *ngIf="search_data"></app-search-info-mid>
+
+      <div class="car-brief">
+        <div class="pic"><img src="{{car_branch_info.car.car.vehicle_image[0].image}}" alt="{{car_branch_info.car.car.name}}" /></div>
+        <div class="brief">
+          <app-car-brief [currentCar]="car_branch_info.car.car" [currentCarType]="car_branch_info.car.vehicly_type"></app-car-brief>
+        </div>
+      </div>
+
+      <div class="car-store">
+        <div class="adress">门店地址：{{car_branch_info.branch.address}}</div>
+        <div class="sell-time">营业时间：{{car_branch_info.branch.pickup_return_rules}}</div>
+      </div>
+    </div>
+  </div>
+
+  <!--表单-->
+  <div class="write-form">
+    <div class="wrapper">
+      <form [formGroup]="formModel">
+        <h3>驾驶员信息</h3>
+        <div class="name-cn">
+          <hq-input [hqLabel]="'中文姓名'" [hqLabelColor]="'#8dd3f0'" [hqPlaceHolder]="'姓名'" formControlName="driver_name" (hqBlur)="onBlur($event)" [hqError]="formModel.get('driver_name').dirty && formModel.get('driver_name').invalid" [hqErrorMsg]="'此项必填'"></hq-input>
+        </div>
+        <div class="name-en" formGroupName="name_en">
+          <hq-input [hqLabel]="'姓：英文或拼音'" [hqLabelColor]="'#8dd3f0'" [hqPlaceHolder]="'姓：英文或拼音'" formControlName="first" [(ngModel)]="name_en[0]"></hq-input>
+          <hq-input [hqLabel]="'名：英文或拼音'" [hqLabelColor]="'#8dd3f0'" [hqPlaceHolder]="'名：英文或拼音'" formControlName="last" [(ngModel)]="name_en[1]"></hq-input>
+        </div>
+        <div class="birthday">
+          <hq-datepicker formControlName="birth" [hqLabel]="'出生年月'" [hqPlaceHolder]="'出生年月'"></hq-datepicker>
+        </div>
+
+        <h3>联系信息</h3>
+        <div class="name">
+          <hq-input [hqLabel]="'联系人姓名'" [hqLabelColor]="'#8dd3f0'" [hqPlaceHolder]="'联系人姓名'" formControlName="name" [hqError]="formModel.get('name').dirty && formModel.get('name').invalid" [hqErrorMsg]="'此项必填'"></hq-input>
+        </div>
+        <div class="phone">
+          <hq-input [hqLabel]="'联系电话'" [hqLabelColor]="'#8dd3f0'" [hqPlaceHolder]="'联系电话'" formControlName="tel" [hqError]="formModel.get('tel').dirty && formModel.get('tel').invalid" [hqErrorMsg]="'电话格式不正确'"></hq-input>
+        </div>
+        <div class="email">
+          <hq-input [hqLabel]="'邮箱'" [hqLabelColor]="'#8dd3f0'" [hqPlaceHolder]="'邮箱'" formControlName="email" [hqError]="formModel.get('email').dirty && formModel.get('email').invalid" [hqErrorMsg]="'邮箱格式不正确'"></hq-input>
+        </div>
+
+
+        <h3>乘员信息</h3>
+        <div class="members" formGroupName="memberInfo">
+          <div class="children">
+            <label>儿童(16岁以下)</label>
+            <hq-input-number formControlName="children"></hq-input-number>
+          </div>
+          <div class="adult">
+            <label>成人(16岁-60岁)</label>
+            <hq-input-number formControlName="adult"></hq-input-number>
+          </div>
+          <div class="older">
+            <label>老人(60岁以上)</label>
+            <hq-input-number formControlName="elder"></hq-input-number>
+          </div>
+        </div>
+
+
+        <h3 *ngIf="search_data.beginCity.country !== 1">取还时间</h3>
+        <div class="time" formGroupName="time" *ngIf="search_data.beginCity.country !== 1">
+          <h4>取车时间</h4>
+<!--
+          <hq-select formControlName="beginTime" [hqOptions]="timeOptions" style="display:block; width: 120px; margin: 8px 0" [hqPlaceholder]="'取车时间'" *ngIf="search_data.beginCity.country === 1"></hq-select>
+-->
+          <hq-radio-group formControlName="beginTime">
+            <hq-radio [hqValue]="'14:00'" [hqLabel]="'14:00'"></hq-radio>
+            <hq-radio [hqValue]="'15:00'" [hqLabel]="'15:00'"></hq-radio>
+            <hq-radio [hqValue]="'16:00'" [hqLabel]="'16:00'"></hq-radio>
+            <hq-radio [hqValue]="'17:00'" [hqLabel]="'17:00'"></hq-radio>
+          </hq-radio-group>
+          <h4>还车时间</h4>
+<!--
+          <hq-select formControlName="endTime" [hqOptions]="timeOptions" style="display:block; width: 120px; margin: 8px 0" [hqPlaceholder]="'还车时间'" *ngIf="search_data.beginCity.country === 1"></hq-select>
+-->
+          <hq-radio-group formControlName="endTime">
+            <hq-radio [hqValue]="'9:00'" [hqLabel]="'9:00'"></hq-radio>
+            <hq-radio [hqValue]="'10:00'" [hqLabel]="'10:00'"></hq-radio>
+            <hq-radio [hqValue]="'11:00'" [hqLabel]="'11:00'"></hq-radio>
+            <hq-radio [hqValue]="'12:00'" [hqLabel]="'12:00'"></hq-radio>
+          </hq-radio-group>
+        </div>
+
+
+        <h3>航班信息<span>(选填)</span></h3>
+        <div class="fight-info" formGroupName="flight">
+          <hq-input [hqLabel]="'航班号'" [hqLabelColor]="'#8dd3f0'" [hqPlaceHolder]="'航班号'" formControlName="flightNo"></hq-input>
+          <hq-datepicker formControlName="flightDate" [hqLabel]="'航班日期'" [hqPlaceHolder]="'航班日期(以当地日期为准)'" [hqMode]="'day'"></hq-datepicker>
+        </div>
+
+
+        <h3>订单备注<span>(选填)</span>：</h3>
+        <hq-input [hqLabel]="'备注'" [hqType]="'textarea'" [hqSize]="'small'" [hqLabelColor]="'#8dd3f0'" [hqPlaceHolder]="'可以在此留下您的需求，如路线、营地等'" formControlName="user_request"></hq-input>
+      </form>
+    </div>
+  </div>
+</div>
+<app-footer-order [country]="country" [car_info]="car_branch_info.car" [allPrice]="order_data.totalPrice" [user_packages]="order_data.packages" [nextPageType]="'pay'" [formModel]="formModel" [search_data]="search_data"></app-footer-order>

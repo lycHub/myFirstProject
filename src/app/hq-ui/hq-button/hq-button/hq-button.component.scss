@@ -1,0 +1,49 @@
+@import "../../../../styles";
+.hq-btn{
+  display: block;
+  width: 100%;
+  border: 1px solid #ccc;
+  @include transit();
+  cursor: pointer;
+  @media screen and (min-width: 375px){
+    padding{
+      top:10px;
+      bottom: 10px;
+    }
+    font-size: 14px;
+  }
+}
+.hq-btn.reset{
+  background-color: rgba(242, 242, 242, 1);
+  color: #fff;
+}
+
+
+
+
+/***********************************/
+.hq-btn-activity{
+  display: inline-block;
+  width: 57px;
+  height:32px;
+  color: #97d5ef;
+  border:1px solid #97d5ef;
+  border-radius: 5px;
+  cursor: pointer;
+  @include transit();
+}
+
+.hq-btn-activity.actived{
+  background-color: #97d5ef;
+  color: #fff;
+}
+
+
+
+
+.disabled{
+  color: rgba(0,0,0,.25);
+  background-color: #f7f7f7;
+  border-color: #d9d9d9;
+  cursor: not-allowed;
+}

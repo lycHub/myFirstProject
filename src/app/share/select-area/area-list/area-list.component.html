@@ -1,0 +1,36 @@
+<div id="arealist" class="center" [style.top]="_visible ? 0 : '120%'"><!--[style.transform]="_visible ? 'translateY(0)' : 'translateY(120%)'"-->
+  <div class="header">
+    <div class="title"  (click)="_emitColsePanel()">
+      <img src="../../../assets/common/img_return.png" alt="返回" />
+      <h2>取车城市</h2>
+    </div>
+
+    <div class="search">
+      <img src="../../../../assets/common/img_search.png" alt="搜索" />
+      <input placeholder="搜索城市" #search (focus)="showSearch = true;" (blur)="onBlur(search.value)" />
+      <i (click)="search.value = filterCityList = null; showSearch = false;">&times;</i>
+    </div>
+  </div>
+
+
+  <div class="areas" *ngIf="!showSearch">
+    <app-areas
+    [save_country]="save_country"
+    [selectedCountry]="selectedCountry"
+    [groupingCityList]="groupingCityList"
+    (changeCountry)="changeCountry($event)"
+    (selectCity)="selectCity($event)">
+    </app-areas>
+  </div>
+
+  <div class="search-list" *ngIf="showSearch">
+    <span class="tip" *ngIf="!hasSearchResult">该城市房车资源拓展中，敬请期待！</span>
+    <div class="search-list-wrap" *ngIf="hasSearchResult">
+      <ul class="clearfix">
+        <li *ngFor="let city of filterCityList;" (click)="selectCity(city); search.value = filterCityList = null; showSearch = false;">
+          <app-city-item [name_cn]="city.name" [name_en]="city.name_native"></app-city-item>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

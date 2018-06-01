@@ -1,0 +1,90 @@
+@import "../../../styles";
+
+#seo{
+  .main{
+    padding: 12px 0;
+    background-color: #fff;
+    .main-wrapper{
+      @include setWidth(94%);
+
+      .article-list{
+        margin-top: 15px;
+
+        .article-item{
+          @include flex-box(null, space-between, center, null);
+          padding: 10px 0;
+          border-bottom: 1px solid #b3b3b3;
+
+          .thumbnail{
+            width: 28.3%;
+          }
+
+          .right{
+            width: 68.3%;
+
+            h3{
+              color: #000;
+              @media screen and (min-width:414px){
+                font-size: 14px;
+              }
+            }
+
+            .author-time{
+              margin: 10px 0;
+            }
+
+            .abstract{
+              position: relative;
+              .detail{
+                position: absolute;
+                right: 0;
+                bottom: 0;
+                color: #108ee9;
+                cursor: pointer;
+              }
+            }
+          }
+        }
+      }
+
+
+      .pagination{
+        margin: 15px 0;
+      }
+
+      .navigate{
+        @include setWidth(50%);
+
+        hq-button{
+          i{
+            @include font(22px,#108ee9);
+            vertical-align: sub;
+          }
+        }
+      }
+
+
+      .friendly-link{
+        h4{
+          color: #000;
+          text-indent: 15px;
+        }
+        .friendly-link-wrap{
+          @include flex-box(null, null, center, wrap);
+          a{
+            width: 25%;
+            color: #108ee9;
+            margin-top: 10px;
+            cursor: pointer;
+            text-align: center;
+          }
+        }
+      }
+
+      .sitemap{
+        @extend .friendly-link;
+        margin-top: 15px;
+      }
+    }
+  }
+}

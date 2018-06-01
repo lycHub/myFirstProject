@@ -1,0 +1,55 @@
+@import "../../../styles";
+#pay-complete{
+  .order-status{
+    @include setWidth(95%);
+    margin-top: 25px;
+    @include box-shadow(0 0 15px #d4d4d4);
+    background-color: #fff;
+    border-top:10px solid #28ABE3;
+    padding: 20px 0;
+
+    .wrapper{
+      @include setWidth(92%);
+
+      .title{
+        @include flex-box(null,center,center,null);
+        margin-bottom: 40px;
+        .icon{
+          width: 12%;
+        }
+        .text{
+          margin-left: 5px;
+          p{
+            font-size: 16px;
+          }
+          span{
+            color: #28ABE3;
+          }
+        }
+      }
+
+
+      .progress{
+        ul{
+          @include flex-box(null,space-between,null,null);
+          margin-top: 25px;
+          li{
+            text-align: center;
+            color: #ccc;
+          }
+          li.through{
+            color: rgba(40, 171, 227, 0.529411764705882);
+          }
+          li.current{
+            color: #28ABE3;
+          }
+        }
+      }
+      .tip{
+        @include font(12px,#999);
+        text-indent: 28px;
+        margin: 20px 0 40px 0;
+      }
+    }
+  }
+}

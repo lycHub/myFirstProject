@@ -1,0 +1,69 @@
+<div id="seo" class="center">
+  <app-seo-header></app-seo-header>
+
+  <div class="main">
+    <div class="main-wrapper">
+
+      <!--面包屑导航-->
+      <hq-breadcrumb [hqTxts]="hqTxts"></hq-breadcrumb>
+
+
+
+      <!--文章列表-->
+      <div class="article-list">
+        <div class="article-item"
+             *ngFor="let article of articles.results;"
+             [routerLink]="['/news-detail', article.id]">
+          <div class="thumbnail">
+            <img src="{{article.main_pic}}" alt="{{article.title}}" />
+          </div>
+
+          <div class="right">
+            <h3>{{article.title}}</h3>
+            <div class="author-time">
+              <span>{{article.ctime | date: 'yyyy.MM.dd'}}</span> <span>{{article.username}}</span>
+            </div>
+            <div class="abstract">
+              {{article.abstract | slice:0:29}}...
+              <span class="detail">详情>></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!--分页-->
+      <div class="pagination">
+        <hq-pagination [hqTotalPageNum]="totalPage" [hqCurrentPageNum]="currentPage" (hqSelectedPage)="changePage($event)"></hq-pagination>
+      </div>
+
+      <!--跳转首页-->
+      <div class="navigate">
+        <hq-button routerLink="/" (hqClick)="showLoading = true" [hqBtnStyle]="{
+        'background-color': '#fff',
+        'color': '#28abe3',
+        'border-color': '#28abe3',
+        'padding': '8px 0',
+        'border-radius': '10px'}">
+          立即预订c照可驾房车<i>&gt;</i>
+        </hq-button>
+      </div>
+
+
+      <!--友情链接-->
+      <div class="friendly-link">
+        <h4>友情链接</h4>
+        <div class="friendly-link-wrap">
+          <a href="{{link.url}}" *ngFor="let link of friendlyLink; trackBy: trackByLinks" target="_blank">{{link.name}}</a>
+        </div>
+      </div>
+
+      <div class="sitemap" [hidden]="true">
+        <h4>网站地图</h4>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!--加载中-->
+<hq-spin [hqShow]="showLoading"></hq-spin>

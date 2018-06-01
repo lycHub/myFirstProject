@@ -1,0 +1,47 @@
+<div id="main" class="center">
+  <div class="bg" *ngIf="carousal">
+    <div class="swiper-container" id="mainCarousal">
+      <div class="swiper-wrapper">
+        <a class="swiper-slide" *ngFor="let item of carousal" href="{{item.url}}" target="_blank"><img src="{{item.image}}" /></a>
+      </div>
+    </div>
+  </div>
+
+  <!--搜索表单-->
+  <div class="search-car">
+    <div class="wrapper">
+      <!--搜车表单组件-->
+      <app-search-car></app-search-car>
+
+      <!--小提示-->
+      <div class="tip">
+        所有车辆C照可驾<br />
+        在线支付全款享98折优惠
+      </div>
+    </div>
+  </div>
+
+
+  <!--指南入口-->
+  <div class="guide-entrance" [routerLink]="['/guide']">
+      <div class="txt">
+        <h4>房车租赁有疑问？</h4>
+        <span>预订、取还车、营地服务、保险 3分钟上手</span>
+      </div>
+      <div class="btn">
+        <hq-button [hqBtnStyle]="{
+            'background-color': '#fff',
+            'color': '#000',
+            'padding': '8px 0px',
+            'border-radius': '5px'}">
+          新手指引
+        </hq-button>
+      </div>
+  </div>
+  <a (click)="login('personCenter')">登录</a>
+</div>
+
+
+<!--加载中-->
+<hq-spin [hqShow]="showLoading"></hq-spin>
+

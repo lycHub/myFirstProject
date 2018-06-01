@@ -1,0 +1,154 @@
+/* 通用样式 */
+*,::before,::after{
+  font-size:12px;
+  color: #797979;
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  font-family:"微软雅黑";
+  font-style:normal;
+  outline:none;
+}
+body,html{
+  background-color: #f2f3f4;
+}
+
+input{
+  border:none;
+}
+input::-webkit-input-placeholder{
+  font-weight: normal;
+  color: rgb(153, 153, 153);
+  // font-size: 12px;
+}
+input::-moz-input-placeholder,input::-ms-input-placeholder{
+  font-weight: normal;
+  color: #808080;
+ //  font-size: 12px;
+}
+button{border:none;background-color: transparent;}
+
+span,a,strong{
+  font-size: inherit;
+}
+
+a{
+  text-decoration: none;
+}
+a:link{text-decoration:none;color:#07519A;}
+a:visited{text-decoration:none;color:#07519A;}
+a[title='站长统计']{
+  display: none;
+}
+ol,ul{
+  list-style: none;
+}
+.clearfix::before,.clearfix::after{
+  content: '.';
+  display: block;
+  line-height: 0;
+  height: 0;
+  visibility:hidden;
+  clear: both;
+}
+
+
+img, video {
+  display:inline-block;
+  width:100%;
+}
+
+.center{
+  max-width: 1200px;
+  margin: 0 auto;
+}
+/* 通用样式结束 */
+
+
+//弹性盒子
+@mixin flex-box($direct, $justify, $align, $wrap){
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -o-flex;
+  display: flex;
+
+  -webkit-justify-content: $justify;
+  -moz-justify-content: $justify;
+  -o-justify-content: $justify;
+  justify-content: $justify;
+
+  -webkit-flex-direction: $direct;
+  -moz-flex-direction: $direct;
+  -o-flex-direction: $direct;
+  flex-direction: $direct;
+
+  -webkit-align-items: $align;
+  -o-align-items: $align;
+  -moz-align-items: $align;
+  align-items: $align;
+
+  -webkit-flex-wrap: $wrap;
+  -moz-flex-wrap: $wrap;
+  -o-flex-wrap: $wrap;
+  flex-wrap: $wrap;
+}
+
+//阴影
+@mixin box-shadow($shadows...) {
+  -o-box-shadow: $shadows;
+  -moz-box-shadow: $shadows;
+  -webkit-box-shadow: $shadows;
+  box-shadow: $shadows;
+}
+
+//过渡效果
+@mixin transit($style:all, $duration: 0.3s){
+  transition: $style $duration;
+  -moz-transition: $style $duration; /* Firefox 4 */
+  -webkit-transition: $style $duration; /* Safari 和 Chrome */
+  -o-transition: $style $duration; /* Opera */
+}
+
+//变化(transform)
+@mixin transform($properties...){
+  -ms-transform:$properties; 	/* IE 9 */
+  -moz-transform:$properties; 	/* Firefox */
+  -webkit-transform:$properties; /* Safari 和 Chrome */
+  -o-transform:$properties; 	/* Opera */
+  transform: $properties;
+}
+
+
+//字体大小和颜色
+@mixin font($size, $color: #333, $weight: normal){
+  font-size: $size;
+  color: $color;
+  font-weight: $weight;
+}
+
+//设置div宽度并居中
+@mixin setWidth($width, $margin: 0){
+  width: $width;
+  margin:$margin auto;
+}
+
+
+//图标背景
+@mixin icon($width, $height, $img_path, $poi...){
+  display: block;
+  width: $width;
+  height: $height;
+  overflow: hidden;
+  background: url($img_path) no-repeat;
+  background-position: $poi;
+}
+
+
+// 渐变
+@mixin gradient($args...){
+  background: -webkit-linear-gradient($args); /* Safari 5.1 - 6.0 */
+  background: -o-linear-gradient($args); /* Opera 11.1 - 12.0 */
+  background: -moz-linear-gradient($args); /* Firefox 3.6 - 15 */
+  background: linear-gradient($args);
+}

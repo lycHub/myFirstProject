@@ -1,0 +1,138 @@
+@import "../../../../styles";
+#order-detail{
+
+  .order{
+    @include setWidth(95%);
+    margin-top: 15px;
+    background-color: #fff;
+    padding: 15px 0 20px 0;
+    @include box-shadow(0 0 15px #d4d4d4);
+
+    .wrapper{
+      @include setWidth(90.8%);
+
+      .order_info{
+        .driver_info{
+          h3{
+            @include font(18px);
+            margin: 20px 0;
+          }
+          .name{
+            @include font(14px);
+          }
+          .name_en{
+            margin: 20px 0;
+            >div{
+              float: left;
+              @include font(14px);
+            }
+            .last{
+              margin-left: 50px;
+            }
+          }
+
+          .birth{
+            @include font(14px);
+          }
+        }
+
+        .connect_info{
+          @extend .driver_info;
+          .phone,.email{
+            @include font(14px);
+          }
+          .phone{
+            margin: 20px 0;
+          }
+        }
+
+
+        .member_info{
+          @extend .driver_info;
+
+          .info{
+            @include flex-box(null,space-between,null,null);
+            >div{
+              -webkit-flex-direction: column;
+              -moz-flex-direction: column;
+              -o-flex-direction: column;
+              flex-direction: column;
+              span,label{
+                display: block;
+                text-align: center;
+                margin-top: 15px;
+                color: #333;
+                @media screen and (min-width: 480px){
+                  font-size: 14px;
+                }
+              }
+            }
+          }
+        }
+        .takeCarTime{
+          @extend .driver_info;
+          span{
+            display: block;
+            @include font(14px);
+            //&:last-of-type{margin-left: 20px}
+          }
+        }
+        .flight{
+          @extend .takeCarTime;
+        }
+
+        .tip{
+          @extend .driver_info;
+          p{
+            word-wrap: break-word;
+            color: #333;
+            @media screen and (min-width: 480px){
+              font-size: 14px;
+            }
+          }
+        }
+
+        .other{
+          @extend .driver_info;
+          ul li{
+            @include flex-box(null,space-between,null,null);
+            margin-bottom: 20px;
+            label,span{
+              @include font(14px);
+            }
+          }
+        }
+        .bottom{
+          @include flex-box(column,null,null,null);
+          margin-top: 40px;
+
+          @media screen and (min-width: 480px){
+            @include flex-box(row,space-between,center,null);
+          }
+
+          .No{
+            color: #333;
+            margin-bottom: 10px;
+          }
+
+          .refuse{
+            @include flex-box(null,flex-end,center,null);
+            @media screen and (min-width: 480px){
+              width: 40%;
+            }
+            span{
+              @include font(16px,#D01C31);
+            }
+            hq-button{
+              width: 34%;
+              margin-left: 15px;
+              @media screen and (min-width: 480px){
+                width: 55%;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

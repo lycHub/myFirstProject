@@ -1,0 +1,98 @@
+@import "../../../../../styles";
+
+.areas-wrapper{
+  position: relative;
+  height:100%;
+  .countries{
+    float: left;
+    width: 27%;
+    height:100%;
+    background-color: #f2f4f5;
+
+    ul{
+      li{
+        height:38px;
+        line-height: 38px;
+        color: #1a1a1a;
+        text-align: center;
+
+        @media screen and (min-width:375px){
+          font-size: 14px;
+        }
+      }
+
+      li.active{
+        color: #28abe3;
+        border-left: 5px solid #28abe3;
+        background-color: #fff;
+      }
+    }
+  }
+  .cities{
+    float: left;
+    width: 62.5%;
+    height:100%;
+
+    .city-wrap{
+      .single-letter{
+        label{
+          display: block;
+          text-indent: 8px;
+          margin:{
+            top:12px;
+            bottom: 2px;
+          }
+
+          @media screen and (min-width:375px){
+            font-size: 14px;
+          }
+        }
+        ul{
+          @include flex-box(null,null,center,wrap);
+          li{
+            width: 45%;
+            margin:{
+              left: 8px;
+              top:10px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+
+  .list-shortcut{
+    position: absolute;
+    // z-index: 30;
+    right: 3px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    border-radius: 10px;
+    text-align: center;
+
+    ul{
+      li{
+        height:18px;
+        line-height: 18px;
+      }
+      li.active{
+        color: #56b8e7;
+      }
+    }
+  }
+
+
+  .list-shortcut.touching{
+    background-color: rgba(0,0,0,0.3);
+    ul{
+      li{
+        color: #fff;
+      }
+      li.active{
+        color: #56b8e7;
+      }
+    }
+  }
+}

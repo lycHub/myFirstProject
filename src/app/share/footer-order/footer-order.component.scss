@@ -1,0 +1,211 @@
+@import "../../../styles";
+#footer-order{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: -webkit-flex;
+  display: flex;
+  width: 100%;
+  max-width: 1200px;
+  height:60px;
+  margin: 0 auto;
+  z-index: 2;
+  @include box-shadow(0px -5px 10px rgba(201, 201, 201, 0.349019607843137));
+
+  @media screen and (min-width:480px){
+    height:70px;
+  }
+
+  .order-info{
+    width: 67.5%;
+    background-color: #fff;
+
+    .price{
+      height:100%;
+      @include flex-box(null,space-around,center,null);
+      >div{
+        @include flex-box(null,null,center,null);
+        b{
+          @include font(20px, rgb(208, 28, 49));
+        }
+        span{
+          margin-left: 8px;
+          @include font(12px, #999);
+        }
+      }
+
+      span{
+        color: rgb(40, 171, 227);
+      }
+    }
+  }
+
+
+  .next-step{
+    @include flex-box(column,center,null,null);
+    width: 32.5%;
+    background-color: rgba(208, 28, 49, 1);
+    span{
+      display: block;
+      @include font(14px, #fff, 700);
+      text-align: center;
+      @media screen and (min-width:480px){
+        font-size: 18px;
+      }
+    }
+  }
+}
+
+
+// 明细弹窗
+hq-modal #price {
+  @include setWidth(88.6%);
+  margin-top: 20px;
+  margin-bottom: 50px;
+
+  .car-price {
+    margin-bottom: 15px;
+    h4 {
+      font-size: 14px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #333;
+      @media screen and (min-width: 480px) {
+        font-size: 16px;
+        padding-bottom: 20px;
+      }
+
+      span{
+        margin-left: 3px;
+      }
+    }
+
+    .list {
+      .item {
+        margin-top: 8px;
+        @include flex-box(null, space-between, center, null);
+
+        .daily {
+          width: 50%;
+          font-size: 14px;
+          @include flex-box(null, space-between, null, null);
+        }
+        .total {
+          @include font(16px, rgb(208, 28, 49), 600);
+        }
+      }
+    }
+  }
+
+  .other-price {
+    margin-bottom: 15px;
+    h4 {
+      font-size: 14px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #333;
+      margin-bottom: 10px;
+      @media screen and (min-width: 480px) {
+        font-size: 16px;
+        padding-bottom: 20px;
+      }
+    }
+
+    .list {
+      .item {
+        margin-bottom: 10px;
+        .name {
+          @include font(14px, #797979, bold);
+          margin-bottom: 5px;
+        }
+        .detail {
+          @include flex-box(null, space-between, center, null);
+          .count {
+            width: 50%;
+            font-size: 14px;
+            @include flex-box(null, space-between, null, null);
+          }
+          .total {
+            @include font(16px, rgb(208, 28, 49), 600);
+          }
+        }
+      }
+    }
+  }
+
+  .oneway_fee, .discount, .special_fee {
+    h4 {
+      font-size: 14px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #333;
+      margin-bottom: 10px;
+      @media screen and (min-width: 480px) {
+        font-size: 16px;
+        padding-bottom: 20px;
+      }
+    }
+
+    .list {
+      .item {
+        @include flex-box(null, space-between, center, null);
+        margin-bottom: 10px;
+
+        .name {
+          font-size: 14px;
+        }
+        .price {
+          @include font(16px, rgb(208, 28, 49), 600);
+        }
+      }
+    }
+  }
+
+  .tax {
+    h4 {
+      font-size: 14px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #333;
+      margin-bottom: 10px;
+      @media screen and (min-width: 480px) {
+        font-size: 16px;
+        padding-bottom: 20px;
+      }
+    }
+
+    .list {
+      .item {
+        @include flex-box(null, space-between, center, null);
+        > div {
+          font-size: 14px;
+        }
+      }
+    }
+  }
+
+  .costAll {
+    margin: 20px 0;
+    > div {
+      font-size: 14px;
+      text-align: right;
+      @media screen and (min-width: 480px) {
+        font-size: 16px;
+      }
+
+      &:first-of-type {
+        margin-bottom: 10px;
+      }
+
+      span {
+        @include font(inherit, rgb(208, 28, 49), bold);
+      }
+    }
+  }
+
+  .des{
+    h4{
+      margin-bottom: 10px;
+    }
+    p{
+      line-height: 1.5;
+    }
+  }
+}

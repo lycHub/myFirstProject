@@ -1,0 +1,20 @@
+<div id="config">
+  <ul>
+    <li *ngFor="let config of save_config_boolean | slice:0:-1"><hq-icon></hq-icon><span>{{config.name}}</span></li>
+  </ul>
+
+  <table cellspacing="0">
+    <thead>
+    <tr>
+      <th>名称</th>
+      <th>属性</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let config of carConfigs;">
+      <td>{{config.name}}</td>
+      <td>{{config.value}}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>

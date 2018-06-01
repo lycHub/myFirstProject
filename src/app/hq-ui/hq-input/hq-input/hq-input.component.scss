@@ -1,0 +1,78 @@
+@import "../../../../styles";
+.input-wrapper{
+  .input-label{
+    overflow-y: hidden;
+    span{
+      display:block;
+      height:28px;
+      line-height: 28px;
+      float: left;
+      @include transit(transform);
+    }
+    span.label{
+      @include transform(translateY(28px));
+    }
+    span.label.show{
+      @include transform(translateY(0));
+    }
+    span.week{float:right;}
+  }
+
+  .input-control{
+    border-bottom: 1px solid #c9c9c9;
+    input{
+      width: 100%;
+      border: none;
+      background-color: transparent;
+      @include font(12px, #333, 700);
+      @media screen and(min-width: 480px){
+        font-size: 18px;
+      }
+    }
+
+    textarea{
+      @extend input;
+    }
+  }
+
+  .input-control.large{
+    padding: 5px 0 15px 0;
+    @media screen and(min-width: 480px){
+      padding: 10px 0 25px 0;
+    }
+  }
+
+  .input-control.normal{
+    padding: 0 0 15px 0;
+    input{
+      @media screen and(min-width: 480px){
+        font-size: 16px;
+        font-weight: normal;
+      }
+    }
+  }
+
+  .input-control.small{
+    padding: 0;
+    input{
+      @media screen and(min-width: 480px){
+        font-size: 16px;
+        font-weight: normal;
+      }
+    }
+  }
+
+  .input-control.focus{
+    border-bottom-color: #66ccff;
+  }
+
+  .input-control.error{
+    border-bottom-color: #db3340;
+  }
+
+  .input-error{
+    height:30px;
+    line-height: 30px;
+    @include font(12px,#db3340);
+  }
+}

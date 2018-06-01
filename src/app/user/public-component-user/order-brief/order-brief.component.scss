@@ -1,0 +1,82 @@
+@import "../../../../styles";
+.brief{
+  @include flex-box(null,null,center,null);
+  padding: 10px 0;
+  margin-top: 10px;
+  @media screen and (min-width:480px){
+    padding: 20px 0;
+  }
+
+  border: {
+    top: 1px solid #C9C9C9;
+    bottom: 1px solid #C9C9C9;
+  };
+  .pic{
+    width: 49%;
+  }
+  .info{
+    width: 51%;
+    @include flex-box(column,null,null,null);
+    h3{
+      @include font(16px,#333,700);
+      @media screen and (min-width:375px){
+        font-size: 18px;
+      }
+    }
+    p{color: #999;margin: 10px 0}
+  }
+}
+
+
+.order-status{
+  @include flex-box(null,space-between,null,null);
+  margin-top: 20px;
+  .left{
+    width: 40%;
+    .order_no{
+      display: none;
+      font-size: 12px;
+      margin-bottom: 10px;
+    }
+
+    .status{
+      @include flex-box(null,space-between,center,null);
+      strong{
+        @include font(18px,#d01c31);
+      }
+    }
+  }
+
+  .right{
+    width: 60%;
+    @include flex-box(null,flex-end,null,null);
+    >div{
+      width: 45%;
+      cursor: pointer;
+    }
+
+    .pay{
+      position: relative;
+      margin-right: 10px;
+      span{
+        position: absolute;
+        left: -10px;
+        top: -13px;
+        height: 20px;
+        border-radius: 3px;
+        min-width: 20px;
+        background: #f04134;
+        color: #fff;
+        line-height: 20px;
+        text-align: center;
+        padding: 0 5px;
+        white-space: nowrap;
+
+        @media screen and (min-width:480px){
+          padding: 0 6px;
+          top: -10px;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,25 @@
+<div id="personal" class="center">
+  <app-person-header [title]="username" [back_path]="back_path"></app-person-header>
+
+  <div class="orders">
+    <div class="order-type">
+      <div class="car">
+        <div class="icon"><img src="../../../../assets/user/car.svg" alt="车辆订单"></div>
+        <span>车辆订单</span>
+      </div>
+      <div class="camp">
+        <div class="icon"><img src="../../../../assets/user/camp.svg" alt="营地订单"></div>
+        <span>暂未开通</span>
+      </div>
+    </div>
+
+    <!--订单列表-->
+    <div class="order-list" *ngIf="order_list.length > 0">
+      <div class="order-item" *ngFor="let order of order_list_show;">
+        <div class="wrapper">
+          <app-order-brief [order_data]="order"></app-order-brief>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,62 @@
+@import "../../../styles";
+
+.hq-time{
+  position: fixed;
+  width: 95%;
+  top: 15%;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  border: 1px solid #d5d5d5;
+  background-color: #fff;
+  opacity: 0;
+  pointer-events: none;
+  border-radius: 5px;
+  margin: 0 auto;
+  @include transit(opacity);
+
+  .hq-time-wrapper{
+    .hq-time-title{
+      text-align: center;
+      margin-top: 25px;
+      @include font(16px,rgba(0,0,0,.65),bold);
+    }
+    table{
+      width: 100%;
+      tbody{
+        tr{
+          td{
+            padding: 25px 0;
+            @include font(14px, rgba(0,0,0,.65));
+            text-align: center;
+            @include transit();
+
+            &:hover{
+              background-color: rgba(207, 207, 208, 0.35);
+            }
+
+            @media screen and (min-width: 480px){
+              font-size: 16px;
+            }
+          }
+
+          td.disabled{
+            color: #ccc;
+            cursor: not-allowed;
+          }
+
+          td.actived{
+            background-color: #186ba0;
+            color: #fff;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+.hq-time.show{
+  opacity: 1;
+  pointer-events: auto;
+}

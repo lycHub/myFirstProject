@@ -1,0 +1,359 @@
+@import "../../../styles";
+app-search-info{
+  position: fixed;
+  width: 100%;
+  max-width: 1200px;
+  top:0;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  z-index: 2;
+}
+
+
+#detail{
+  margin-top: 70px;
+    >.wrapper{
+      background-color: #fff;
+      .instruction{
+        @include setWidth(95%);
+        //background-color: #66ccff;
+        .summary{
+          width: 37%;
+          line-height: 2;
+        }
+
+
+        .carousal{
+          .swiper-container{
+            .swiper-button-custom{
+              position: absolute;
+              top: 50%;
+              width: 27px;
+              height: 44px;
+              margin-top: -22px;
+              z-index: 1;
+              cursor: pointer;
+              background-size: 27px 44px;
+              background-position: center;
+              background-repeat: no-repeat;
+
+              &:after{
+                display: block;
+                height:100%;
+                line-height: 44px;
+                color: #E4E4E4;
+                font-size: 25px;
+              }
+            }
+
+            .swiper-button-leftCustom{
+              left:10px;
+              right:auto;
+              &:after{
+                content: "＜";
+              }
+            }
+            .swiper-button-rightCustom{
+              right:10px;
+              left:auto;
+              &:after{
+                content: "＞";
+              }
+            }
+
+            .count{
+              position: absolute;
+              bottom: 3px;
+              right: 15px;
+              @include font(14px,#999,bold);
+              z-index: 1;
+            }
+          }
+        }
+
+
+        .nts{
+          @include flex-box(null,space-between,null,null);
+          .featrue{
+            width: 73%;
+            //background-color: rosybrown;
+          }
+          .tag{
+            width: 18.8%;
+            height:28px;
+            line-height: 28px;
+            color: #fff;
+            background-color: #e5d0a0;
+            border-right: 5px solid #dba377;
+            text-align: center;
+            -webkit-align-self: center;
+            align-self: center;
+            @include transform(translateX(14%));
+          }
+        }
+
+        .price-quality{
+          margin-top: 5px;
+          padding-bottom: 18px;
+          border-bottom: 1px solid #C9C9C9;
+          .high-quality{
+            width: 100%;
+            @include flex-box(null, space-between, center, null);
+            .pic{
+              width:23%;
+            }
+            dl{
+              width: 72%;
+              dt{
+                @include font(16px,#333,bold);
+                @media screen and (min-width:375px){
+                  font-size: 18px;
+                }
+              }
+              dd{
+                display: flex;
+                @include font(12px,#999);
+                margin-top: 5px;
+                hq-tag{margin-right: 5px;}
+              }
+            }
+          }
+
+          .car-price{
+            text-align: right;
+            strong{
+              @include font(25px,#D01C31,bold);
+              @media screen and (min-width:375px){
+                font-size: 32px;
+              }
+            }
+            b{
+              color: #D01C31;
+            }
+          }
+          .car-price.noRecommend{
+            width: 100%;
+            text-align: right;
+          }
+        }
+      }
+    }
+
+  .car-store-info{
+    margin: 8px 0 20px 0;
+    background-color: #e5e6e6;
+    .wrapper{
+      @include setWidth(95%);
+
+      .take-car-direct{
+        @include flex-box(null,space-between,center,null);
+        height:60px;
+        padding-bottom: 8px;
+        .left{
+          @include flex-box(null,space-between,center,null);
+          width: 47%;
+
+          .logo{
+            width: 59%;
+          }
+          //.rate{
+          //  color: #28ABE3;
+          //}
+        }
+
+        .right{
+          color: #28ABE3;
+          b{color: #28ABE3;}
+        }
+      }
+
+
+      .take-car-tip,.refund-rules{
+        padding: 10px 0;
+        border-top:1px solid #fff;
+      }
+
+      .take-car-tip{
+        border-bottom: 1px solid #fff;
+        .content{
+         padding: 0 12px;
+        }
+      }
+
+      .take-car-adress{
+        @include flex-box(null, space-between, center, null);
+        padding: 15px 0;
+        //.map{
+        //  width: 27%;
+        //  min-width: 80px;
+        //}
+
+        ul{
+          li{
+            margin-bottom: 13px;
+            span.login{
+              color: #108ee9;
+              cursor: pointer;
+            }
+          }
+        }
+      }
+    }
+
+    .promotion{
+      @include flex-box(null,space-between,center,null);
+      background-color: #fff;
+      padding: 10px 2.5%;
+      .activity{
+        display: -webkit-flex;
+        display: flex;
+        hq-tag{margin-right: 10px;}
+      }
+      .arrow-right{
+        font-size: 25px;
+      }
+    }
+  }
+
+  .packages{
+    @include setWidth(95%);
+    >div{
+      &:last-of-type{margin-bottom: 68px;}
+    }
+    .insurance{
+      margin-bottom: 20px;
+      .wrapper{
+        .item{
+          background-color: #fff;
+          border-radius: 5px;
+          padding: 20px 0;
+          margin-top: 15px;
+          .item-wrapper{
+            @include setWidth(91.4%);
+            .title{
+              @include flex-box(null,space-between,center,null);
+              padding-bottom: 15px;
+              border-bottom: 1px solid #ccc;
+              h6{
+                @include font(14px,#000,normal);
+                @media screen and (min-width:375px){
+                  font-size: 18px;
+                }
+
+              }
+              span{
+                color: #97D5EF;
+              }
+            }
+
+
+            .down{
+              @include flex-box(null,space-between,null,null);
+              margin-top: 10px;
+              .info{
+                width: 65.7%;
+              }
+              .add{
+                @include flex-box(column,center,center,null);
+                span{
+                  margin-top: 3px;
+                  @include font(12px,#D01C31);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+
+    .mileage-package{
+      margin-bottom: 20px;
+      .wrapper{
+        background-color: #fff;
+        border-radius: 5px;
+        padding: 20px 0;
+        margin-top: 15px;
+
+        .wrapper-in{
+          @include setWidth(91.4%);
+
+          .title{
+            @include flex-box(null,space-between,center,null);
+            padding-bottom: 15px;
+            border-bottom: 1px solid #ccc;
+            h6{
+              @include font(18px,#000,normal);
+            }
+            span{
+              color: #97D5EF;
+            }
+          }
+
+          .package-item{
+            @include flex-box(null,space-between,null,null);
+            margin-top: 25px;
+
+            .info{
+              width: 65.7%;
+            }
+            .add{
+              width: 25%;
+              @include flex-box(column,center,center,null);
+              hq-input-number{
+                width: 100%;
+              }
+              span{
+                margin-top: 3px;
+                @include font(12px,#D01C31);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .detail{
+    background-color: #fff;
+    margin-bottom: 100px;
+
+    .detail-wrap{
+      @include setWidth(95%);
+
+      app-title-line{
+        display: block;
+        padding: 12px 0;
+      }
+    }
+  }
+}
+
+hq-modal .text{
+  @include setWidth(80%);
+  line-height: 2;
+  margin: {
+    top:30px;
+    bottom: 50px;
+  };
+  h3{
+    @include font(16px,#28abe3,bold);
+  }
+}
+
+
+#searchFormDialog{
+  @include setWidth(95%);
+  @include transit(top);
+  background-color: #fff;
+  position: fixed;
+  top:-430px;
+  left: 50%;
+  margin-left: -47.5%;
+  z-index: 2;
+}
+
+#searchFormDialog.active{
+  top:100px;
+}

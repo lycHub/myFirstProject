@@ -1,0 +1,17 @@
+<div class="search-info">
+  <div class="back" (click)="back()"><i></i></div>
+  <div class="info" (click)="openSearchForm()">
+    <h3 *ngIf="pageType !== 'car'">{{text}}</h3>
+    <ng-container *ngIf="pageType === 'car'">
+      <app-search-info-mid [city_data]="city_data"></app-search-info-mid>
+      <!--<div class="icon">-->
+        <!--<i></i>-->
+      <!--</div>-->
+    </ng-container>
+  </div>
+  <div class="member" (click)="login()"><i></i></div>
+</div>
+
+
+<!--加载中-->
+<hq-spin [hqShow]="showLoading"></hq-spin>

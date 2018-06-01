@@ -1,0 +1,39 @@
+@import "../../../../styles";
+#reset-pass{
+  app-form-template{
+    form{
+      @include setWidth(75%,40px);
+
+      .input{
+        .phone-belong{
+          position: relative;
+          span{
+            position: absolute;
+            right: 0;
+            @include font(14px,#333);
+            @media screen and (min-width:480px){
+              font-size: 16px;
+              bottom: 16px;
+            }
+          }
+        }
+
+        .phone{
+          @extend .phone-belong;
+        }
+
+        .newPass>span{
+          height:30px;
+          line-height: 30px;
+          @include font(12px,#db3340);
+        }
+      }
+
+      hq-button{
+        display: block;
+        @include setWidth(83.3%);
+        margin-top:100px;
+      }
+    }
+  }
+}

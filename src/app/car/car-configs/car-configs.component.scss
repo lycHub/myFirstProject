@@ -1,0 +1,58 @@
+@import "../../../styles";
+#config{
+  @include setWidth(90.5%);
+  margin:{
+    top:20px;
+    bottom:50px;
+  }
+
+  ul{
+    @include flex-box(null, null, null, wrap);
+    li{
+      width: 30%;
+      margin-bottom: 10px;
+      margin-left: 3%;
+
+      hq-icon{
+        display: none;
+        width: 20px;
+        height:20px;
+        @media screen and (min-width:480px){
+          display: inline-block;
+        }
+      }
+
+      span{
+        vertical-align: super;
+        margin-left: 3px;
+      }
+    }
+  }
+
+
+  table{
+    width: 100%;
+    margin-top: 10px;
+    border: 1px solid;
+
+    tr{
+      height:30px;
+      text-align: center;
+      th,td{
+        color: #000;
+      }
+    }
+
+    thead tr th:first-of-type{
+      width: 40%;
+      border-right: 1px solid #000;
+    }
+    tbody tr td{
+      border-top: 1px solid #000;
+    }
+    tbody tr td:first-of-type{
+      border-right: 1px solid #000;
+    }
+  }
+
+}

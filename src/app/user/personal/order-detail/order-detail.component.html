@@ -1,0 +1,86 @@
+<div id="order-detail" class="center">
+  <app-person-header [title]="'订单详情'"></app-person-header>
+
+  <div class="order">
+    <div class="wrapper">
+      <app-order-brief [order_data]="order_data" [showOrderStatus]="false"></app-order-brief>
+
+      <!--订单详细信息-->
+      <div class="order_info">
+        <div class="driver_info">
+          <h3>驾驶员信息</h3>
+          <div class="name">中文姓名：{{order_data.order_car_res.driver_name}}</div>
+          <div class="name_en clearfix">
+            <div class="first">姓：{{order_data.order_car_res.first_name}}</div>
+            <div class="last">名：{{order_data.order_car_res.last_name}}</div>
+          </div>
+          <!--<div class="birth">出生年月：{{order_data.order_car_res.birth}}</div>-->
+        </div>
+
+        <div class="connect_info">
+          <h3>联系信息</h3>
+          <div class="name">中文姓名：{{order_data.order_car_res.name}}</div>
+          <div class="phone">联系电话：{{order_data.order_car_res.tel}}</div>
+          <div class="email">邮箱：{{order_data.order_car_res.email}}</div>
+        </div>
+
+
+        <div class="member_info">
+          <h3>乘客信息</h3>
+          <div class="info">
+            <div class="child">
+              <label>儿童(16岁以下)</label>
+              <span>{{order_data.order_car_res.children}}人</span>
+            </div>
+
+            <div class="adult">
+              <label>成人(16岁-60岁)</label>
+              <span>{{order_data.order_car_res.adult}}人</span>
+            </div>
+
+            <div class="elder">
+              <label>老人(60岁以上)</label>
+              <span>{{order_data.order_car_res.elder}}人</span>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="takeCarTime">
+          <h3>预约取车时间</h3>
+          <span>取车时间：{{order_data.order_car_res.start_date | date: 'yyyy-M-d HH:mm'}}</span>
+          <span>还车时间：{{order_data.order_car_res.end_date | date: 'yyyy-M-d HH:mm'}}</span>
+        </div>
+
+        <div class="flight">
+          <h3>航班信息</h3>
+          <span>航班号：{{order_data.order_car_res.flight_no}}</span>
+          <span>航班日期：{{order_data.order_car_res.flight_time}}</span>
+        </div>
+
+        <div class="tip" [hidden]="!order_data.order_car_res.memo">
+          <h3>订单备注</h3>
+          <p>{{order_data.order_car_res.memo}}</p>
+        </div>
+
+        <div class="other">
+          <h3>订购的套包保险：</h3>
+          <ul>
+            <li *ngFor="let pack of packages;">
+              <label>{{pack.name}} x {{pack.count}}</label>
+              <span>{{order_data.order_car_res.symbol}}{{pack.count * pack.price | number: '1.1-1'}}</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="bottom">
+          <div class="No">订单号：{{order_data.order_car_res.order_no}}</div>
+          <div class="refuse">
+            <span>{{order_data.order_car_res.symbol}}{{order_data.order_car_res.total}}</span>
+            <!--<hq-button>退款</hq-button>-->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,184 @@
+<app-search-info *ngIf="search_data" [backToPath]="'/carlist'" [city_data]="search_data" (_emitOpenSearchForm)="showSearchForm = $event;"></app-search-info>
+<div id="detail" class="center">
+  <div class="wrapper">
+    <div class="instruction">
+      <div class="summary" [hidden]="true">
+        {{car_info.car.profile}}
+      </div>
+      <div class="carousal">
+        <div class="swiper-container" id="carDetailCarousal">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide" *ngFor="let img of car_info.car.vehicle_image;"><img src="{{img.image}}" alt="{{car_info.car.name}}"></div>
+          </div>
+
+          <div class="swiper-button-custom swiper-button-leftCustom"></div>
+          <div class="swiper-button-custom swiper-button-rightCustom"></div>
+          <div class="count">{{imgIndex}}/{{car_info.car.vehicle_image.length}}</div>
+        </div>
+      </div>
+
+      <div class="nts">
+        <div class="featrue">
+          <app-car-brief [ads]="ads" [rateWidth]="'87%'" [currentCar]="car_info.car" [currentCarType]="car_info.vehicly_type" [comment]="comment"></app-car-brief>
+        </div>
+        <div class="tag" *ngIf="car_info.car.recommend">环球精选</div>
+      </div>
+
+      <div class="price-quality">
+        <div class="high-quality" *ngIf="car_info.car.recommend">
+          <div class="pic"><img src="../../../assets/car/carDetail/high_quality.png" /></div>
+          <dl>
+            <dt>环球房车精选车辆</dt>
+            <dd><hq-tag [hqType]="'gold'">急速确认</hq-tag>下单后一小时内确认车辆状态</dd>
+            <dd><hq-tag [hqType]="'gold'">专属客服</hq-tag>一对一为您旅途提供全面保障</dd>
+            <dd><hq-tag [hqType]="'gold'">免费退改</hq-tag>时限内退改免收任何费用</dd>
+          </dl>
+        </div>
+        <div class="car-price" [class.noRecommend]="!car_info.car.recommend">
+          <strong>{{car_info.currency_symbol}}{{car_info.daily_rents | number:'1.1-1'}}</strong><b>/天</b>
+        </div>
+      </div>
+
+      <app-car-config-brief [currentCar]="car_info.car" [save_config_all]="save_config_all" [configType]="configType"></app-car-config-brief>
+    </div>
+  </div>
+
+  <div class="car-store-info" [style.margin-bottom]="save_package_info.company_package && save_package_info.mileage_fee ? '20px' : '50px'">
+    <div class="wrapper">
+      <div class="take-car-direct">
+        <div class="left">
+          <div class="logo" *ngIf="country.id !== 1"><img src="{{company_info.image}}" /></div>
+          <div class="rate">评分{{company_info.score}}</div>
+        </div>
+        <div class="right" (click)="show_pr_rules = true;">取还车指南<b>&gt;</b></div>
+      </div>
+
+      <div class="refund-rules">
+        <h5>退改规则：</h5>
+        <span>{{country.retreat_rule}}</span>
+      </div>
+
+      <div class="take-car-tip" *ngIf="car_info.car.reminder">
+        <h5>注意事项：</h5>
+        <div class="content" [innerHTML]="car_info.car.reminder | safeHtml"></div>
+      </div>
+
+      <div class="take-car-adress">
+        <ul>
+          <li>
+            门店地址：{{address}}
+            <span class="login" (click)="login()" [hidden]="isLogin || country.id !== 1">登录查看详细地址</span>
+          </li>
+          <li *ngIf="branch_info.pickup_return_rules">营业时间：{{branch_info.pickup_return_rules}}</li>
+          <li>
+            <p class="airport" style="margin-bottom: 13px;">{{branch_info.airport}}</p>
+            <p class="train">{{branch_info.train_station}}</p>
+          </li>
+          <li><a href="tel:4000000823">联系电话：4000000823</a></li>
+        </ul>
+        <!--<div class="map"><img src="../../../assets/car/carDetail/map.png" alt="车行定位" /></div>-->
+      </div>
+    </div>
+    <div class="promotion" style="display: none;">
+      <div class="activity">
+        促销：<hq-tag [hqType]="'gold'">推荐立减</hq-tag>推荐好友下单即可享受优惠
+      </div>
+      <div class="arrow-right">&gt;</div>
+    </div>
+  </div>
+
+  <!--套包-->
+  <div class="packages">
+    <div class="insurance" *ngIf="save_package_info.company_package">
+      <app-title-line>车行套包</app-title-line>
+      <div class="wrapper">
+        <div class="item" *ngFor="let pack of save_package_info.company_package;">
+          <div class="item-wrapper">
+            <div class="title">
+              <h6>{{pack.name}}</h6>
+              <!--<span>套包说明</span>-->
+            </div>
+            <div class="down">
+              <div class="info">{{pack.description}}</div>
+              <div class="add">
+                <!--[(ngModel)]="pack.count" (ngModelChange)="changeNum($event, pack)"-->
+                <hq-input-number [min]="0" [hqValue]="pack.count" [hqDisabled]="pack.disabled" (_emitNewValue)="changeNum($event, pack, x)" *ngIf="pack.calc_method === 'bycount'"></hq-input-number>
+                <hq-button [hqType]="'activity'" [hqDisabled]="pack.disabled" [hqChecked]="pack.checked" [hqTxt]="pack.checked ? '已添加' : '添加'" *ngIf="pack.calc_method !== 'bycount'" (changeChecked)="changeChecked($event, pack)"></hq-button>
+                <span>{{car_info.currency_symbol}}{{pack.disabled ? 0 : pack.price | number: '1.1-1'}}/件</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!--里程包-->
+    <div class="mileage-package" *ngIf="save_package_info.mileage_fee">
+      <app-title-line>里程包</app-title-line>
+      <div class="wrapper">
+        <div class="wrapper-in">
+          <div class="title">
+            <h6>车行里程包</h6>
+           <!-- <span>里程包说明</span>-->
+          </div>
+
+          <div class="package-item" *ngFor="let pack of save_package_info.mileage_fee;">
+            <div class="info">{{pack.name}}</div>
+            <div class="add">
+              <hq-input-number [min]="0" [hqValue]="pack.count" [hqDisabled]="pack.disabled" (_emitNewValue)="changeNum($event, pack, x)" *ngIf="pack.type === 'package'"></hq-input-number>
+              <hq-button [hqType]="'activity'" [hqDisabled]="pack.disabled" [hqChecked]="pack.checked" [hqTxt]="pack.checked ? '已添加' : '添加'" *ngIf="pack.type !== 'package' && pack.type !== 'perunit'" (changeChecked)="changeChecked($event, pack)"></hq-button>
+              <span [hidden]="pack.type === 'perunit'">{{car_info.currency_symbol}}{{pack.disabled ? 0 : pack.price | number: '1.1-1'}}/件</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--车辆详情-->
+  <div class="detail" *ngIf="car_info.car.content.length">
+    <div class="detail-wrap">
+      <app-title-line>车辆详情</app-title-line>
+      <div class="content" [innerHTML]="car_info.car.content | safeHtml"></div>
+    </div>
+  </div>
+</div>
+
+<!--底部下单-->
+<app-footer-order [country]="country" [pick_branch]="branch_info" [car_info]="car_info" [allPrice]="allPrice" [search_data]="search_data" [user_packages]="save_user_package"></app-footer-order>
+
+
+<!--d取还车指南弹窗-->
+<hq-modal [hqTitle]="'取还车指南'" [hqShow]="show_pr_rules" (hqCloseModal)="show_pr_rules = false;">
+  <div class="text">
+    <h3>一、取车流程</h3>
+    1.客户持车辆预定确认单(电子版/打印版)、主驾驶人身份证，驾照正副本，主驾驶人名下信用卡到达车行办理取车手续。<br />
+    2.检验车辆,包括里程数、是否满油、车身外观、内饰、性能等情况，有问题随时提问。<br />
+    3.检查无误签订租赁合同并支付押金提车。
+    <h3>二、还车流程</h3>
+    1.在约定的还车时间抵达车行。<br />
+    2.客户与车行共同验车。<br />
+    3.撤销押金预授权，刷取违章预授权。 <br />
+    4.如超时还车将按照车行标准收取超时、超公里费用。 <br />
+    5.在非营业时间还车，将可能产生夜间服务费。 <br />
+    6.不同门店还车，将会根据两地相隔距离收取异地还车费。 <br />
+    7.客户还车时油量低于出车时油量，差额部份按照车行合同的相关规定收取。 <br />
+    8.客户还车办理完成。
+  </div>
+</hq-modal>
+
+
+<!--首页搜索表单弹窗-->
+<hq-overlay [hqAcitve]="showSearchForm" (hqClick)="showSearchForm = false;" [hqZindex]="2"></hq-overlay>
+<div id="searchFormDialog" [class.active]="showSearchForm">
+  <app-search-car [isDialog]="true"></app-search-car>
+</div>
+
+
+<!--加载中-->
+<hq-spin [hqShow]="showLoading"></hq-spin>
+
+
+<!--置顶按钮-->
+<hq-backtop [hqVisibilityHeight]="600" [hqBottom]="70"></hq-backtop>

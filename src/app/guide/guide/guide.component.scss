@@ -1,0 +1,99 @@
+@import "../../../styles";
+#guide{
+  .bg{
+    height:117px;
+    padding-top: 10px;
+    background: url(../../../assets/guide/bg_guide.jpg) no-repeat;
+    background-size: cover;
+    .wrap{
+      .search{
+        position: relative;
+        @include flex-box(null,space-between,center,null);
+        @include setWidth(92%);
+
+        .back{
+          @include font(30px,#fff);
+        }
+
+        .input{
+          position: relative;
+          width: 57%;
+          height:30px;
+
+          @media screen and (min-width:375px){
+            width: 60%;
+          }
+
+          img{
+            position: absolute;
+            width: 22px;
+            top:5px;
+            left: 5px;
+          }
+          input{
+            width: 100%;
+            height:inherit;
+            border: none;
+            border-radius: 5px;
+            text-indent: 35px;
+          }
+        }
+
+        .country{
+          @include flex-box(null, null ,center ,null);
+
+          .arrow{
+            display: block;
+            width: 6px;
+            height: 6px;
+            border: 2px solid #fff;
+            border-top: 0;
+            border-left: 0;
+            margin-left: 8px;
+            @include transform(rotate(45deg));
+          }
+        }
+
+        .selectCountry{
+          width: 40%;
+          max-width: 150px;
+          overflow: hidden;
+          position: absolute;
+          right: 0;
+          top:40px;
+          background-color: #fff;
+          border-radius: 5px;
+          padding: 0 16px;
+          z-index: 1;
+          @include transit(height);
+
+          app-country{
+            display: block;
+            padding: 5px 0;
+          }
+        }
+      }
+    }
+  }
+
+
+  .search-list-wrapper{
+    position: fixed;
+    width: 100%;
+    top: 117px;
+    bottom: 0;
+  }
+
+
+
+  .tab{
+    margin-top: -36px;
+    hq-tab{
+      .cd{
+        background-color: #fff;
+      }
+    }
+  }
+}
+
+

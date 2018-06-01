@@ -1,0 +1,23 @@
+@import "../../../../styles";
+
+.header{
+  position: relative;
+  height:40px;
+  @include box-shadow(0 1px 0px 2px #cbcbcb);
+  @include gradient(150deg, rgba(144, 247, 236, 1) 0%, rgba(144, 247, 236, 1) 0%, rgba(31, 218, 154, 1) 100%, rgba(31, 218, 154, 1) 100%);
+  h2{
+    @include font(16px,#fff,bold);
+    text-align: center;
+    line-height: 40px;
+  }
+  span{
+    display: block;
+    width: 50px;
+    height:100%;
+    position: absolute;
+    @include font(22px,#fff);
+    top:0;
+    text-align: center;
+    line-height: 1.8;
+  }
+}

@@ -1,0 +1,7 @@
+<hq-scroll [scrollStyle]="{backgroundColor: '#fff'}" [data]="searchList" [listenTap]="true" (myTap)="_emitselectItem($event)">
+  <ul>
+    <!--(click)="_emitselectItem(ques)"-->
+    <li *ngFor="let ques of searchList;" title="{{ques.title}}">{{ques.title}}</li>
+    <!--<li *ngIf="!searchList">暂无结果</li>-->
+  </ul>
+</hq-scroll>

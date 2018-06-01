@@ -1,0 +1,49 @@
+<div class="select-date">
+  <div class="beginDate">
+    <div class="selectedDate">
+      <div class="date">
+        <span>当地取车时间</span>
+        <span>周{{week_info.beginWeek}}</span>
+      </div>
+
+      <div class="time"><!-- [hidden]="!inCountry"-->
+        <span (click)="showCalendar = true;">{{date_info.beginDate | date: 'yyyy-M-d'}}</span>
+        <span *ngIf="inCountry" (click)="times.begin.show = true;">{{timesValue[0]}}:00</span>
+      </div>
+    </div>
+
+    <!--<hq-input [hqValue]="date_info.beginDate" [hqLabel]="'当地取车时间'" [hqSize]="'large'" [hqType]="'calendar'" [currentWeek]="week_info.beginWeek" [hqReadOnly]="true"></hq-input>-->
+  </div>
+
+  <div class="endDate">
+    <div class="selectedDate">
+      <div class="date">
+        <span>当地还车时间</span>
+        <span>周{{week_info.endWeek}}</span>
+      </div>
+
+      <div class="time"><!-- [hidden]="!inCountry"-->
+        <span (click)="showCalendar = true;">{{date_info.endDate | date: 'yyyy-M-d'}}</span>
+        <span *ngIf="inCountry" (click)="times.end.show = true;">{{timesValue[1]}}:00</span>
+      </div>
+    </div>
+<!--
+    <hq-input [hqValue]="date_info.endDate" [hqLabel]="'当地还车时间'" [hqSize]="'large'" [hqType]="'calendar'" [currentWeek]="week_info.endWeek" [hqReadOnly]="true"></hq-input>&lt;!&ndash;[nzValue]="date_info.end.endDate | date: 'yyyy年MM月d日'"&ndash;&gt;
+-->
+  </div>
+</div>
+
+<!--日历-->
+<app-calendar
+  [startValidate]="startValidate"
+  [hqDate_Info]="date_info"
+  [_visible]="showCalendar"
+  (closeCalendar)="showCalendar = $event;"
+  (setDate)="setDate($event)">
+</app-calendar>
+
+
+<!--time-->
+<hq-timepicker [hqShow]="times.begin.show" (hqClose)="times.begin.show = $event;" [hqTitle]="times.begin.title" [(ngModel)]="timesValue[0]" (ngModelChange)="changeTime('begin')"></hq-timepicker>
+
+<hq-timepicker [hqShow]="times.end.show" (hqClose)="times.end.show = $event;" [hqTitle]="times.end.title" [(ngModel)]="timesValue[1]" (ngModelChange)="changeTime('end')"></hq-timepicker>

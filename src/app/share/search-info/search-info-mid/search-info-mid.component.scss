@@ -1,0 +1,47 @@
+@import "../../../../styles";
+.txt{
+  @include flex-box(null, space-around, null, null);
+  width: 100%;
+  height:100%;
+  background-color: #fff;
+
+  .begin{
+    >div{
+      text-align: center;
+      margin-top: 3px;
+
+      @media screen and (min-width:480px){
+        font-size: 14px;
+      }
+    }
+    .cn{
+      color: #333;
+      font-weight: 600;
+    }
+    .en,.date{
+      color: rgb(102, 102, 102);
+      font-weight: 400;
+    }
+  }
+
+  .days{
+    width: 15%;
+    @include flex-box(column,center,null,null);
+    span{
+      display: block;
+      text-align: center;
+      @include font(12px);
+      @media screen and (min-width:480px){
+        font-size: 14px;
+      }
+    }
+    //i{
+    //  @include icon(100%, 5px, '../../../../assets/car/sprite.png', 4px bottom);
+    //  background-size: cover;
+    //}
+  }
+
+  .end{
+    @extend .begin;
+  }
+}

@@ -1,0 +1,44 @@
+@import "../../../../styles";
+
+.about-component{
+  padding: 10px 0 17px 0;
+  background-color: #fff;
+  margin: 10px 0;
+
+  .title-wrap{
+    padding-bottom: 10px;
+    border-bottom: 1px solid #f5f5f5;
+    h3{
+      @include setWidth(86%);
+      @include font(14px,#1a1a1a,bold);
+      text-indent: 10px;
+      border-left: 2px solid #1b2939;
+      @media screen and (min-width:375px){
+        font-size: 16px;
+      }
+    }
+  }
+
+
+  .about-wrapper{
+    .about-component-list{
+      @include flex-box(null,null,center,null);
+
+      .about-component-item{
+        width: 33.3%;
+
+        .pic{
+          @include setWidth(47%);
+        }
+        span{
+          display: block;
+          text-align: center;
+          color: #1a1a1a;
+          @media screen and (min-width:375px){
+            font-size: 14px;
+          }
+        }
+      }
+    }
+  }
+}

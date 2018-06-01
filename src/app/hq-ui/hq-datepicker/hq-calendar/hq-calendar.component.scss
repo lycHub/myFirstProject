@@ -1,0 +1,87 @@
+@import "../../../../styles";
+.hq-datepicker-day{
+  .hq-datepicker-header{
+    @include flex-box(null,space-between,center,null);
+    padding: 10px 0;
+    background-color: #f0f2f4;
+    a{
+      @include font(20px,#1b1d1f);
+      cursor: pointer;
+      @media screen and (min-width: 480px){
+        font-size: 22px;
+      }
+    }
+    span{
+      @include font(16px,#1b1d1f);
+      @media screen and (min-width: 480px){
+        font-size: 18px;
+      }
+    }
+    a.hq-last-month{
+      margin-left: 20px;
+    }
+    a.hq-next-month{
+      margin-right: 20px;
+    }
+  }
+
+
+  table{
+    width: 100%;
+    display: table;
+    border-color: grey;
+    border-collapse:collapse;
+
+    thead{
+      tr{
+        th{
+          @include font(14px,#222);
+          padding: 8px 0;
+          background-color: #f6f8fa;
+          @media screen and (min-width: 480px){
+            font-size: 16px;
+            padding: 10px 0;
+          }
+        }
+      }
+    }
+
+    tbody{
+      tr{
+        td{
+          height: 40px;
+          text-align: center;
+          border-bottom: 1px solid rgba(213, 213, 213, 0.5);
+          @include font(14px,#222);
+          cursor: pointer;
+          @include transit();
+          @media screen and (min-width: 480px){
+            font-size: 16px;
+            height: 40px;
+          }
+          &:hover{
+            background-color: #d6d6d6;
+          }
+        }
+
+        td.today{ // 今天的样式
+          background-color: #d6d6d6;
+        }
+
+        td.notInCurrentMonth{    // 不在当前月的样式
+          color: #ccc;
+        }
+
+        td.disabled{
+          color: #ccc;
+          cursor: not-allowed;
+        }
+
+        td.actived{
+          color: #fff;
+          background-color: #186ba0;
+        }
+      }
+    }
+  }
+}

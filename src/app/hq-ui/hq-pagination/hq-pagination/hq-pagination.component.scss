@@ -1,0 +1,51 @@
+@import "../../../../styles";
+
+.hq-pagination{
+  ul{
+    @include flex-box(null, space-between, center, null);
+    li{
+      cursor: pointer;
+      color: rgba(0,0,0,.65);
+      border-radius: 4px;
+      list-style: none;
+      text-align: center;
+      vertical-align: middle;
+      padding: 0 5px;
+      border: 1px solid #d9d9d9;
+      @include transit();
+      &:hover{
+        border-color: #108ee9;
+        color: #108ee9;
+      }
+    }
+
+    li.active{
+      border-color: #108ee9;
+      color: #108ee9;
+      cursor: not-allowed;
+    }
+
+    li.disabled{
+      border-color: #ccc;
+      color: #ccc;
+      cursor: not-allowed;
+    }
+
+    li.ellipsis{
+      border: none;
+      &:after{
+        content: "\2022\2022\2022";
+        display: block;
+        color: rgba(0,0,0,.25);
+        text-align: center;
+      }
+    }
+
+    li.prev,li.next{
+      padding: {
+        top: 5px;
+        bottom: 5px;
+      };
+    }
+  }
+}

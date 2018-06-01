@@ -1,0 +1,15 @@
+@import "../../../../styles";
+.hq-overlay{
+  opacity:0;
+  position:fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  @include transit(opacity);
+  pointer-events:none;
+}
+.hq-overlay.active{
+  opacity: 0.5;
+  pointer-events:auto;
+}

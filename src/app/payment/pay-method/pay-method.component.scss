@@ -1,0 +1,171 @@
+@import "../../../styles";
+
+#pay-method{
+  .order-pay{
+    @include setWidth(95%);
+    @include box-shadow(0 0 15px #d4d4d4);
+    background-color: #fff;
+    border-top:10px solid #28ABE3;
+    margin-top: 25px;
+    padding-bottom: 10px;
+
+    .tip{
+      line-height: 2;
+      background-color: #F7EAC8;
+      text-align: center;
+      span{
+        @include font(11px,#FF9933);
+      }
+    }
+
+
+    .wrapper{
+      @include setWidth(92.5%);
+      //background-color: #66ccff;
+
+      .order-info{
+        margin: 30px 0 20px 0;
+        >div{
+          margin-bottom: 10px;
+          label{
+            display: inline-block;
+            width: 21.8%;
+            max-width: 95px;
+            color: #666;
+          }
+          span{
+            color: #666;
+          }
+          b{
+            @include font(18px,#D01C31);
+          }
+
+          .count{
+            margin-bottom: 10px;
+          }
+        }
+      }
+
+
+      .method{
+        padding-bottom: 30px;
+        ul{
+          //background-color: #1fda9a;
+          @include setWidth(89.3%);
+
+          li{
+            @include flex-box(null,space-between,center,null);
+            padding: 15px 0;
+            border-bottom: 1px solid #e8e8e8;
+            .left{
+              @include flex-box(null,null,center,null);
+              i{
+                width: 40px;
+                height:40px;
+                overflow: hidden;
+                background: url(../../../assets/payment/sprite.png) no-repeat left 8px;
+              }
+            }
+
+            .checkbox{
+              width: 14px;
+              height:14px;
+              background-color: #fff;
+              cursor: pointer;
+              position: relative;
+              outline: none;
+              border: 1px solid #d9d9d9;
+              border-radius: 2px;
+              -webkit-transition: all .3s;
+              @include transit();
+              margin-right: 5px;
+
+              &:after{
+                @include transform(rotate(45deg) scale(0));
+                position: absolute;
+                left: 4px;
+                top: 1px;
+                display: table;
+                width: 5px;
+                height: 8px;
+                border: 2px solid #fff;
+                border-top: 0;
+                border-left: 0;
+                content: " ";
+                -webkit-transition: all .1s cubic-bezier(.71,-.46,.88,.6);
+                transition: all .1s cubic-bezier(.71,-.46,.88,.6);
+              }
+            }
+
+            .checkbox.checked{
+              @extend .checkbox;
+              border-color: #108ee9;
+              background-color: #108ee9;
+              &:after{
+                @include transform(rotate(45deg) scale(1));
+              }
+            }
+          }
+
+          li.alipay{
+            .left{
+              i{
+                background-position:left -48px;
+              }
+            }
+          }
+         /* a.unionpay{
+            .left{
+              i{
+                background-position:left -100px;
+              }
+            }
+          }
+
+          a.overseaunionpay{
+            .left{
+              i{
+                background-position:left -152px;
+              }
+            }
+          }*/
+        }
+
+        a{
+          display: block;
+          width: 50%;
+          max-width: 136px;
+          height:30px;
+          line-height: 30px;
+          border-radius: 5px;
+          background-color: rgba(40, 171, 227, 1);
+          margin: 20px auto;
+          text-align: center;
+          @include font(16px,#fff);
+          cursor: pointer;
+          @media screen and (min-width: 375px){
+            height:40px;
+            line-height: 40px;
+          }
+        }
+
+        a.disabled{
+          color: rgba(0,0,0,.25);
+          background-color: #f7f7f7;
+          cursor: not-allowed;
+        }
+      }
+    }
+  }
+}
+
+
+hq-alert{
+  .info{
+    margin: 15px 0;
+    span{
+      @include font(16px,#000);
+      line-height: 1.5;
+    }
+  }
+}

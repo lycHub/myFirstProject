@@ -1,0 +1,19 @@
+.hq-progress{
+  .hq-progress-wrapper{
+    .hq-progress-inner{
+      display: inline-block;
+      width: 100%;
+      background-color: #f7f7f7;
+      border-radius: 100px;
+      vertical-align: middle;
+
+      .hq-progress-bg{
+        border-radius: 100px;
+        background-color: #108ee9;
+        -webkit-transition: all .4s cubic-bezier(.08,.82,.17,1) 0s;
+        transition: all .4s cubic-bezier(.08,.82,.17,1) 0s;
+        position: relative;
+      }
+    }
+  }
+}

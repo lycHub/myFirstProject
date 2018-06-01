@@ -1,0 +1,8 @@
+@import "../../../../styles";
+.code{
+  @include flex-box(null,space-between,null,null);
+  hq-input{
+    display: block;
+    width: 13.8%;
+  }
+}

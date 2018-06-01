@@ -1,0 +1,11 @@
+<div class="hq-pagination">
+  <ul (click)="tabPage($event)">
+    <li class="prev" [class.disabled]="disablePrevPage" [attr.data-disabled]="disablePrevPage" [attr.data-page]="hqCurrentPageNum - 1">上一页</li>
+    <li [class.active]="hqCurrentPageNum === 1" [attr.data-page]="1">1</li>
+    <li class="ellipsis" *ngIf="ellipsis.left"></li>
+    <li *ngFor="let page of btn_page" [class.active]="page.active" [attr.data-page]="page.label">{{page.label}}</li>
+    <li class="ellipsis" *ngIf="ellipsis.right"></li>
+    <li [hidden]="hqTotalPageNum <= 1" [class.active]="hqCurrentPageNum === hqTotalPageNum" [attr.data-page]="hqTotalPageNum">{{hqTotalPageNum}}</li>
+    <li class="next" [class.disabled]="disableNextPage" [attr.data-disabled]="disableNextPage" [attr.data-page]="hqCurrentPageNum + 1">下一页</li>
+  </ul>
+</div>

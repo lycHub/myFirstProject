@@ -1,0 +1,17 @@
+<div class="hq-collapse">
+  <div class="hq-collapse-header"
+       (click)="controlPanel()"
+       [class.disabled]="hqDisabled"
+       [class.active]="_active"
+       [ngStyle]="hqTitleStyle">
+    <div class="hq-collapse-header-wrap">
+      {{hqTitle}}
+      <i [style.color]="hqTitleStyle.color">&gt;</i>
+    </div>
+  </div>
+  <div class="hq-collapse-content-wrap" [class.active]="_active">
+    <div class="hq-collapse-content">
+      <ng-content></ng-content>
+    </div>
+  </div>
+</div>

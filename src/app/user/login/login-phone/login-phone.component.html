@@ -1,0 +1,23 @@
+<div id="login-phone" class="center">
+  <app-form-template [routerParmas]="{loginTo: targetPageType, from: source_path}">
+    <form [formGroup]="formModel" (submit)="onSubmit($event)">
+      <div class="input">
+        <div class="phone-belong">
+          手机号归属地
+          <span>中国</span>
+        </div>
+        <div class="phone"><!--[hqAutoFocus]="true"-->
+          <hq-input formControlName="username" [hqError]="formModel.get('username').dirty && formModel.get('username').invalid" [hqErrorMsg]="'电话格式不正确'" [hqPlaceHolder]="'请输入手机号'"></hq-input>
+          <span (click)="getCode()" [style.bottom]="formModel.get('username').dirty && formModel.get('username').invalid ? '43px' : '16px'" [class.disabled]="codeBtnStatus.disabled">{{codeBtnStatus.label}}</span>
+        </div>
+
+        <app-code-control formControlName="code" *ngIf="codeStatus"></app-code-control>
+      </div>
+      <hq-button>登录</hq-button>
+    </form>
+  </app-form-template>
+</div>
+
+
+<!--加载中-->
+<hq-spin [hqShow]="showLoading"></hq-spin>

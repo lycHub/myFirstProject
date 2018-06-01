@@ -1,0 +1,51 @@
+@import "../../../styles";
+
+.select-city{
+  @include flex-box(null, space-between, null, null);
+
+  .beginCity{
+    @include flex-box(null, null, center, null);
+    position: relative;
+    width: 49%;
+    cursor: pointer;
+
+    .selected{
+      width: 79.5%;
+      border-bottom: 1px solid #999;
+      label{
+        color: #666;
+      }
+      .city-name{
+        margin:10px 0;
+        @media screen and (min-width: 480px){
+          margin:15px 0;
+        }
+        .cn{
+          @include font(12px, #333, 700);
+          @media screen and (min-width: 480px){
+           font-size: 18px;
+          }
+        }
+        .en{
+          @include font(12px, #666);
+        }
+      }
+    }
+    .right-arrow{
+      position: absolute;
+      right: 0;
+    }
+  }
+
+  .endCity{
+    @extend .beginCity;
+    width: 39%;
+    border-bottom: 1px solid #999;
+    cursor: pointer;
+
+    .selected{
+      border-bottom: none;
+    }
+    //border: 1px solid red;
+  }
+}

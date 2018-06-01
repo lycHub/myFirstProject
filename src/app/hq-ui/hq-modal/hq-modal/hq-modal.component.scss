@@ -1,0 +1,47 @@
+@import "../../../../styles";
+.hq-modal{
+  position: fixed;
+  border-radius: 10px;
+  left: 0;
+  right: 0;
+  width: 84%;
+  max-width: 1200px;
+  margin:0 auto;
+  padding:10px;
+  overflow: hidden;
+  background-color: #fff;
+  opacity: 0;
+  pointer-events:none;
+  @include transit();
+
+  hq-scroll{
+    .hq-modal-wrapper{
+      position: absolute;
+      width: 100%;
+      //max-height: 420px;
+      //min-height:400px;
+      //overflow-y: auto;
+
+      .hq-model-title{
+        margin-top: 12px;
+        @include font(20px,#000);
+        text-align: center;
+      }
+    }
+  }
+  .hq-modal-close{
+    position: relative;
+    width: 100%;
+    @include font(30px,#ccc);
+    text-align: center;
+    background-color: #fff;
+    @include box-shadow(0px -3px 3px #ccc);
+    cursor: pointer;
+    margin-top: -37px;
+  }
+}
+
+.hq-modal.active{
+  pointer-events:auto;
+  opacity: 1;
+}

@@ -1,0 +1,60 @@
+<!--遮罩-->
+<hq-overlay [hqAcitve]="showCountryList" [hqBackGroundColor]="'transparent'" (hqClick)="showCountryList = false;"></hq-overlay>
+
+<div id="guide" class="center">
+  <div class="bg">
+    <div class="wrap">
+      <div class="search">
+        <div class="back" (click)="back()">&lt;</div>
+        <div class="input">
+          <img src="../../../assets/guide/icon_search.png" alt="搜索图标" />
+          <input placeholder="搜索常见问题" (keyup)="search($event)" (focus)="onFocus($event)" />
+        </div>
+        <div class="country">
+          <app-country [icon]="currentCountry.image" [name]="currentCountry.name" (click)="showCountryList = !showCountryList; secondSortActive = false;"></app-country>
+          <i class="arrow"></i>
+        </div>
+
+        <!--国家下拉-->
+        <div class="selectCountry" [style.height]="showCountryList ? trueHeight + 'px' : 0" #coutrylist>
+          <app-country *ngFor="let item of countries;" (click)="selectCountry(item)" [icon]="item.image" [name]="item.name" [textColor]="'#666'" #coutrylist></app-country>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!--搜索列表-->
+  <div class="search-list-wrapper" *ngIf="showSearchList">
+    <app-searchlist (selectItem)="selectItem($event)" [searchList]="searchResult"></app-searchlist>
+  </div>
+
+  <div class="tab" *ngIf="!showSearchList">
+    <hq-tab [hqTab]="tabs" [hqLabelStyle]="tabStyle" [activedColor]="'#fff'" [hqLabelWrapWidth]="'70%'" (hqSelectedTab)="changeTab($event)">
+      <div class="cd">
+        <hq-collapseset [hqAccordion]="secondSort.length">
+          <hq-collapse
+            *ngFor="let item of secondSort;"
+            [hqTitle]="item.name"
+            [hqActive]="currentSortId === item.id || secondSortActive"
+            (hqClickTitle)="selectSort(item.id)">
+            <hq-collapseset><!--[hqAccordion]="true"-->
+              <!--(click)="onClick($event)"-->
+              <hq-collapse
+                *ngFor="let ques of questions;"
+                [hqTitle]="ques.sn +'.'+ ques.title"
+                [hqActive]="ques.sn === sn_ques"
+                [hqTitleStyle]="collapseStyle">
+                <div class="content" [innerHTML]="ques.content| safeHtml"></div>
+              </hq-collapse>
+            </hq-collapseset>
+          </hq-collapse>
+        </hq-collapseset>
+      </div>
+    </hq-tab>
+  </div>
+</div>
+
+
+<!--置顶按钮-->
+<hq-backtop></hq-backtop>

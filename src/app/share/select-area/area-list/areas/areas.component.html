@@ -1,0 +1,37 @@
+<div class="areas-wrapper clearfix">
+  <div class="countries">
+    <ul (click)="_emitCountry($event)">
+      <li *ngFor="let country of save_country;" [attr.data-id]="country.id" [class.active]="selectedCountry === country.id">{{country.name}}</li>
+    </ul>
+  </div>
+  <hq-scroll [scrollStyle]="{backgroundColor: '#fff'}" [data]="groupingCityList" [listenScroll]="true" [probeType]="3" (scrolling)="onScrolling($event)" class="cities">
+    <div class="city-wrap">
+    <!--  <div class="single-letter">
+        <label>当前城市</label>
+        <ul>
+          <li><app-city-item [name_cn]="alreadSelectedCity.begin.name" [name_en]="alreadSelectedCity.begin.name_native"></app-city-item></li>
+        </ul>
+      </div>-->
+      <div class="single-letter" *ngFor="let item of groupingCityList;" #cityGroup>
+        <label>{{item.letter}}</label>
+        <ul>
+          <li *ngFor="let city of item.citys;" (click)="_emitselectCity(city)">
+            <app-city-item [name_cn]="city.name" [name_en]="city.name_native"></app-city-item>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </hq-scroll>
+
+
+  <!--右侧字母-->
+  <div class="list-shortcut"
+       [class.touching]="isTouching"
+       (touchstart)="onShortCutTouchStart($event)"
+       (touchmove)="onShortCutTouchMove($event)"
+       (touchend)="isTouching = false;">
+    <ul>
+      <li *ngFor="let item of shortcut; index as x" [attr.data-index]="x" [class.active]="currentShortCutIndex === x">{{item}}</li>
+    </ul>
+  </div>
+</div>

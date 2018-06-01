@@ -1,0 +1,11 @@
+<div class="configs">
+  <ul>
+    <li *ngFor="let config of save_config_boolean | slice:0:3"><hq-icon></hq-icon><span>{{config.name}}</span></li>
+  </ul>
+  <span>更多配置</span>
+</div>
+
+
+<hq-modal [hqTitle]="'车辆配置'" [hqShow]="showConfigDetail" (hqCloseModal)="showConfigDetail = $event;">
+  <app-car-configs [carConfigs]="save_config_show" [save_config_boolean]="save_config_boolean"></app-car-configs>
+</hq-modal>

@@ -1,0 +1,18 @@
+@import "../../../../styles";
+.form-template{
+  margin-top: 50px;
+  h2{
+    @include font(14px,#5e5e5e,bold);
+    width: 20%;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #28abe3;
+
+    @media screen and (min-width:480px){
+      font-size: 20px;
+    }
+  }
+  .toggle{
+    color: #28ABE3;
+    text-align: center;
+  }
+}

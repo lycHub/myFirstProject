@@ -1,0 +1,31 @@
+@import "../../../../styles";
+
+.hq-tabs{
+  overflow: hidden;
+  .hq-tabs-header{
+    position: relative;
+    border-bottom: 1px solid #d9d9d9;
+    .hq-tabs-labels{
+      @include flex-box(null, space-around, null, null);
+      padding: 10px 0;
+      margin: 0 auto;
+
+      .hq-tabs-label{
+        text-align: center;
+        @include transit(color);
+      }
+
+      //.hq-tabs-label.active{
+      //  color: #108ee9;
+      //}
+    }
+
+    .hq-tabs-line{
+      position: absolute;
+      height: 3px;
+      bottom: 0;
+      @include transit();
+      will-change: left;
+    }
+  }
+}

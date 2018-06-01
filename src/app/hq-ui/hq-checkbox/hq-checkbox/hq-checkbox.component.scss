@@ -1,0 +1,58 @@
+@import "../../../../styles";
+.ant-checkbox-wrap{
+  display: flex;
+  width: 83px;
+  cursor: pointer;
+  align-items: center;
+
+  .ant-checkbox{
+    width: 14px;
+    height:14px;
+    background-color: #fff;
+    cursor: pointer;
+    position: relative;
+    outline: none;
+    border: 1px solid #d9d9d9;
+    border-radius: 2px;
+    -webkit-transition: all .3s;
+    @include transit();
+    margin-right: 5px;
+
+    &:after{
+      @include transform(rotate(45deg) scale(0));
+      position: absolute;
+      left: 4px;
+      top: 1px;
+      display: table;
+      width: 5px;
+      height: 8px;
+      border: 2px solid #fff;
+      border-top: 0;
+      border-left: 0;
+      content: " ";
+      -webkit-transition: all .1s cubic-bezier(.71,-.46,.88,.6);
+      transition: all .1s cubic-bezier(.71,-.46,.88,.6);
+    }
+  }
+
+  .ant-checkbox-checked{
+    @extend .ant-checkbox;
+    border-color: #108ee9;
+    background-color: #108ee9;
+    &:after{
+      @include transform(rotate(45deg) scale(1));
+    }
+  }
+
+  .ant-checkbox-input{
+    width: 0;
+    height:0;
+  }
+}
+
+.ant-checkbox-disabled{
+  @extend .ant-checkbox;
+  border-color: #d9d9d9;
+  background-color: #d9d9d9;
+  color: #ccc;
+}

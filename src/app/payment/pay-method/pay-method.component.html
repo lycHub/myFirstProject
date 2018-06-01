@@ -1,0 +1,118 @@
+<div id="pay-method" class="center">
+  <app-search-info [pageType]="'pay'" [text]="'选择支付方式'"></app-search-info>
+  <div class="order-pay">
+    <div class="tip"  [hidden]="!discount">
+     <!-- <span>因可能存在的价格变动，<br />请您在一小时内完成支付，超时订单将自动取消</span>
+      <br />-->
+      <span>距离98折优惠结束还有{{discount}}</span>
+    </div>
+
+    <div class="wrapper">
+      <div class="order-info">
+        <div class="orderNo">
+          <label>订单号：</label>
+          <span>{{order_res.order_no}}</span>
+        </div>
+
+        <div class="car-name">
+          <label>车辆名称：</label>
+          <span>{{car.name}}</span>
+        </div>
+
+        <div class="order-date">
+          <label>订单日期：</label>
+          <span>{{search_data.beginDate}} - {{search_data.endDate}} 共{{days}}天</span>
+        </div>
+
+        <div class="money">
+          <div class="count">
+            <label>订单金额：</label>
+            <b>{{order_res.currency_symbol}}{{order_res.total}}</b>
+          </div>
+          <div *ngIf="order_res.order_status === 'deposit'">
+            <label>预付定金：</label>
+            <b>{{order_res.currency_symbol}}{{order_res.total / 10 | number: '1.1-1'}}</b>
+          </div>
+
+          <div *ngIf="order_res.order_status === '付尾款'">
+            <label>付尾款：</label>
+            <b>{{order_res.currency_symbol}}{{order_res.total * 0.9 * 0.98 | number: '1.1-2'}}</b>
+          </div>
+        </div>
+      </div>
+
+
+      <!--支付方式-->
+      <div class="method">
+        <ul>
+          <li (click)="payMethod('wxpay')">
+            <div class="left">
+              <i></i>
+              <div class="txt">
+                <h5>微信支付</h5>
+                <span>推荐支付方式</span>
+              </div>
+            </div>
+            <div class="checkbox" [class.checked]="selectedMethod === 'wxpay'"></div>
+          </li>
+
+          <li class="alipay" (click)="payMethod('alipay')" *ngIf="!inWeChat">
+            <div class="left">
+              <i></i>
+              <div class="txt">
+                <h5>支付宝支付</h5>
+                <span>推荐支付方式</span>
+              </div>
+            </div>
+            <div class="checkbox" [class.checked]="selectedMethod === 'alipay'"></div>
+          </li>
+
+          <!--<a class="unionpay" onclick="alert('开通中！')">
+            <div class="left">
+              <i></i>
+              <div class="txt">
+                <h5>银联在线</h5>
+                <span>在线支付，无需开通网银</span>
+              </div>
+            </div>
+            <div class="right-arrow">&gt;</div>
+          </a>
+
+          <a class="unionpay" onclick="alert('开通中！')">
+            <div class="left">
+              <i></i>
+              <div class="txt">
+                <h5>中国大陆银行卡</h5>
+                <span>安全极速支付，无需开通网银</span>
+              </div>
+            </div>
+            <div class="right-arrow">&gt;</div>
+          </a>
+
+          <a class="overseaunionpay" onclick="alert('开通中！')">
+            <div class="left">
+              <i></i>
+              <div class="txt">
+                <h5>非中国大陆银行卡</h5>
+                <span>支付网关将收取4%手续费</span>
+              </div>
+            </div>
+            <div class="right-arrow">&gt;</div>
+          </a>-->
+        </ul>
+
+        <a [href]="pay_url" target="_blank" (click)="pay()" [class.disabled]="!selectedMethod" *ngIf="!inWeChat">去支付</a>
+        <hq-button *ngIf="inWeChat" [hqDisabled]="!selectedMethod" (hqClick)="pay()" style="display: block;width: 50%;margin: 20px auto;">去支付</hq-button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!--支付弹窗-->
+<hq-alert [hqShow]="payAlert.show" (hqClose)="payAlert.show = $event;" (hqComplete)="payComplate(order_res.id)">
+  <div class="info">
+    <span>请在{{payAlert.text}}内完成支付,如果您已支付成功，请点击"支付完成"按钮</span>
+  </div>
+</hq-alert>
+

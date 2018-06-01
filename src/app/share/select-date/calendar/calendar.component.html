@@ -1,0 +1,55 @@
+<div id="calendar" class="center" [style.top]="_visible ? 0 : '120%'">
+  <div class="wrapper">
+    <div class="title">
+      <img src="../../../../assets/common/arrow-back.png" (click)="_emitcloseCalendar()" />
+      <h5>请选择当地取还车时间</h5>
+    </div>
+
+    <div class="date-info">
+      <div class="beginDate">
+        <div class="year">{{date_info.beginDate | date: 'yyyy'}}年</div>
+        <div class="date">{{date_info.beginDate | date: 'MM月dd日'}}</div>
+      </div>
+      <div class="days">
+        <img src="../../../../assets/main/arrow-date.png" alt="图标" />
+        {{days}}天
+      </div>
+      <div class="endDate">
+        <div class="year">{{date_info.endDate | date: 'yyyy'}}年</div>
+        <div class="date">{{date_info.endDate  | date: 'MM月dd日'}}</div>
+      </div>
+    </div>
+    <div class="week">
+      <ul>
+        <li>日</li>
+        <li>一</li>
+        <li>二</li>
+        <li>三</li>
+        <li>四</li>
+        <li>五</li>
+        <li>六</li>
+      </ul>
+    </div>
+  </div>
+
+
+  <div class="day-list-box">
+    <div class="day-item" *ngFor="let item of dateArr">
+      <div class="month-bg">{{item.data_title.getMonth() === 0 ? 12 : item.data_title.getMonth()}}月</div>
+      <ul>
+        <li *ngFor="let day of item.days"
+            (click)="selectDay(day)"
+            [class.disabled]="day.disabled"
+            [class.through]="day.through"
+            [class.begin]="day.beginClass"
+            [class.active]="day.active"
+            [class.end]="day.end">
+          <span>{{day.text}}</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <hq-button (hqClick)="selectDate($event)" [style.pointer-events]="_visible ? 'auto' : 'none'" [style.display]="_visible ? 'block' : 'none'">确定</hq-button>
+  <!--<button (click)="selectDate($event)">确定</button>-->
+</div>

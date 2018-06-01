@@ -1,0 +1,16 @@
+@import "../../../../../styles";
+.city-item{
+  width: 100%;
+  @include flex-box(column,center,null,null);
+  margin-right: 15px;
+  padding: 8px 0;
+  border: 1px solid #e6e6e6;
+  border-radius: 4px;
+  >div{
+    @media screen and (min-width:375px){
+      font-size: 14px;
+    }
+  }
+  .cn{color: #000; text-align: center;}
+  .en{word-wrap: break-word; text-align: center;}
+}

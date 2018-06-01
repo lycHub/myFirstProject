@@ -1,0 +1,64 @@
+@import '../../../styles';
+
+#about{
+  .header{
+    position: relative;
+    padding: 10px 0;
+    background-color: #1b2939;
+
+    img{
+      position: absolute;
+      width: 20px;
+      height:25px;
+      overflow: hidden;
+      left: 15px;
+      top:50%;
+      margin-top:-12.5px;
+    }
+
+    h2{
+      @include font(15px,#fff,bold);
+      text-align: center;
+
+      @media screen and (min-width:375px){
+        font-size: 17px;
+      }
+    }
+  }
+
+  .logo{
+    @include setWidth(33%);
+    margin:{
+      top:28px;
+      bottom: 28px;
+    }
+  }
+
+  .aboutus{
+    padding: 10px 0;
+    background-color: #fff;
+    .aboutus-wrap{
+      @include flex-box(null,space-between,center,null);
+      @include setWidth(86%);
+
+      h3{
+        @include font(14px,#1a1a1a,bold);
+        text-indent: 10px;
+        border-left: 2px solid #1b2939;
+        @media screen and (min-width:375px){
+          font-size: 16px;
+        }
+      }
+
+      img{
+        width: 20px;
+        height:25px;
+        overflow: hidden;
+      }
+    }
+  }
+
+
+
+
+}

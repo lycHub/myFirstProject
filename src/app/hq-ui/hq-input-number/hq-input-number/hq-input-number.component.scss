@@ -1,0 +1,28 @@
+@import "../../../../styles";
+.hq-input-number{
+  @include flex-box(null,space-between,center,null);
+  width: 100%;
+
+  i{
+    @include icon(17px,34px,'../../../../assets/common/add-reduce.png', left 0);
+    &:first-of-type{
+      background-position: right 0;
+    }
+  }
+
+  .hq-input{
+    width: 50%;
+    border: none;
+    border-bottom: 1px solid;
+    text-align: center;
+    background-color: transparent;
+  }
+}
+
+.hq-input-number.disabled{
+  cursor: not-allowed;
+  i,.hq-input{
+    color: #ccc;
+    border-color: #ccc;
+  }
+}

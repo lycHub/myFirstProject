@@ -1,0 +1,11 @@
+<!--<div class="title">
+  <h2 style="position: relative;">租房车</h2>&lt;!&ndash;<span style="position: absolute;width: 80px;">(3-31 15:30)</span>&ndash;&gt;
+</div>
+<div class="advertise">
+  <span>五一房旅佳节，4.15~5.15全场9折优惠起</span>
+</div>-->
+
+<hq-tab [hqTab]="tabs" (hqSelectedIndex)="changeTab($event)">
+    <app-search-form [all_area_data]="all_area_data" [inCountry]="inCountry" [inCarlist]="inCarlist" (_emitClose)="_emitClose.emit($event)"></app-search-form>
+    <!--<app-search-form [inCarlist]="inCarlist" (_emitClose)="_emitClose.emit($event)" [hidden]="currentTabIndex !== 1"></app-search-form>-->
+</hq-tab>

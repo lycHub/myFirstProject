@@ -1,0 +1,19 @@
+<div class="txt">
+  <div class="begin">
+    <div class="cn">{{city_data.beginCity.name}}</div>
+    <div class="en">{{city_data.beginCity.name_native}}</div>
+    <div class="date">{{city_data.beginDate | date: 'yyyy-MM-dd'}}  <span *ngIf="city_data.beginCity.country === 1">{{city_data.pickupTime}}</span></div>
+    <!--<div class="time">12:00</div>-->
+  </div>
+  <div class="days">
+    <span>{{days}}天</span>
+    <span *ngIf="hours && city_data.beginCity.country === 1">{{hours}}小时</span>
+    <!--<i></i>-->
+  </div>
+  <div class="end">
+    <div class="cn">{{city_data.endCity.name}}</div>
+    <div class="en">{{city_data.endCity.name_native}}</div>
+    <div class="date">{{city_data.endDate | date: 'yyyy-MM-dd'}}  <span *ngIf="city_data.beginCity.country === 1">{{city_data.dropoffTime}}</span></div>
+    <!--<div class="time">12:00</div>-->
+  </div>
+</div>

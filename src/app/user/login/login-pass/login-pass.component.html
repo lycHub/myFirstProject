@@ -1,0 +1,24 @@
+<div id="login-pass" class="center">
+  <app-form-template [title]="'密码登录'" [changeLoginMethod]="'切换手机登录'" [changeLoginUrl]="'/login-phone'" [routerParmas]="{loginTo: loginTo, from: source_path}">
+    <form [formGroup]="formModel" (submit)="onSubmit($event)">
+      <div class="input">
+        <div class="phone-belong">
+          手机号归属地
+          <span>中国</span>
+        </div>
+        <div class="phone">
+          <hq-input [hqAutoFocus]="true" [hqPlaceHolder]="'请输入手机号'" formControlName="username" [hqError]="formModel.get('username').dirty && formModel.get('username').invalid" [hqErrorMsg]="'电话格式不正确'"></hq-input>
+        </div>
+        <div class="pass">
+          <hq-input [hqPlaceHolder]="'请输入密码'" [hqType]="'password'" formControlName="password" [hqError]="formModel.get('password').dirty && formModel.get('password').invalid" [hqErrorMsg]="'此项必填'"></hq-input>
+        </div>
+        <p [routerLink]="['/reset-pass', {loginTo: loginTo}]">忘记密码</p>
+      </div>
+      <hq-button>登录</hq-button>
+    </form>
+  </app-form-template>
+</div>
+
+
+<!--加载中-->
+<hq-spin [hqShow]="showLoading"></hq-spin>

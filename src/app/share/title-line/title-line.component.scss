@@ -1,0 +1,11 @@
+@import "../../../styles";
+
+.title{
+  @include flex-box(null,space-between,center,null);
+  hr{
+    width: 34.2%;
+  }
+  h5{
+    font-size: 18px;
+  }
+}

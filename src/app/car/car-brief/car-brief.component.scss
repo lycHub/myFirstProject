@@ -1,0 +1,41 @@
+@import "../../../styles";
+.name-tag{
+  h3{
+    @include font(15px,#000,bold);
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+
+  .tags{
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -o-flex;
+    display: flex;
+    margin: 10px 0;
+
+    hq-tag{
+      @media screen and (min-width:375px){
+        margin-right: 8px;
+      }
+    }
+  }
+
+  .rate{
+    @include flex-box(null,space-between,center,wrap);
+    .sc{
+      .score{
+        //font-size: 15px;
+        margin-right: 10px;
+      }
+    }
+    .ads{
+      margin-top: 10px;
+      color: #000;
+    }
+  }
+  .suggest{
+   // margin-top: 10px;
+    color: #999;
+  }
+}

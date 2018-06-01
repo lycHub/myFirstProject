@@ -1,0 +1,89 @@
+<div id="search-result" class="center">
+  <div class="wrapper-fixed">
+    <!--顶部搜索信息-->
+    <app-search-info [backToPath]="'/main'" [city_data]="city_data" *ngIf="city_data" (_emitOpenSearchForm)="controlSearchForm('open')"></app-search-info>
+
+    <!--车行与筛选-->
+    <div class="wrapper">
+      <div class="che-hang" (click)="showModal = true" *ngIf="city_data.beginCity.country !== 1">
+        有{{save_company.length}}家车行可选
+        <i>﹥</i>
+      </div>
+      <div class="filter">
+        <ul>
+          <li *ngFor="let config of save_config_filter | slice: 1:5" (click)="filterCar(config.name_english)" [class.active]="save_user_filter.indexOf(config.name_english) !== -1">{{config.name}}</li>
+        </ul>
+        <div class="btn" (click)="showFilterPanel = true">
+          <i></i>
+          <span>筛选</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ads" routerLink="/activity" [style.margin-top]="city_data.beginCity.country === 1 ? '125px' : '165px'">
+    限时大促：C30下单即免前1000英里里程费
+  </div>
+
+  <div class="carlist">
+    <div class="car-item" *ngFor="let car of save_carlist_filter" (click)="gotoDetail(car)">
+      <div class="wrapper">
+        <div class="overview">
+          <div class="cover-pic">
+            <!--<img src="../../../assets/common/img_loading.gif" alt="test" />-->
+            <!--<img src="{{car.car.vehicle_image[0].image}}" alt="{{car.car.name}}" />-->
+            <img *ngIf="car.car.vehicle_image.length > 0" [defaultImage]="'../../../assets/common/loading.gif'" [lazyLoad]="car.car.vehicle_image[0].image" alt="{{car.car.name}}" />
+          </div>
+          <div class="featrue">
+            <app-car-brief [currentCar]="car.car" [currentCarType]="car.vehicly_type"></app-car-brief>
+            <div class="down">
+              <div class="price"><b>{{car.currency_symbol}}{{car.daily_rents | number:'1.1-1'}}</b><span>/天</span></div>
+            </div>
+          </div>
+        </div>
+
+        <app-car-config-brief [currentCar]="car.car" [save_config_all]="save_config_all" [configType]="configType"></app-car-config-brief>
+      </div>
+
+      <!--角标蒙层-->
+      <div class="jiaobiao" *ngIf="car.car.recommend"></div>
+    </div>
+  </div>
+</div>
+
+
+<!--筛选面板-->
+<hq-overlay [hqAcitve]="showFilterPanel" [hqBackGroundColor]="'transparent'" (hqClick)="showFilterPanel = false;"></hq-overlay>
+<app-filter-car
+  [max_seats]="initConfig.max_seats"
+  [showFilterPanel]="showFilterPanel"
+  (closePanel)="showFilterPanel = $event;"
+  [save_config_filter]="save_config_filter"
+  [save_carlist]="save_carlist"
+  [carlist_filter_out]="save_carlist_filter"
+  [save_user_filter]="save_user_filter"
+  (afterFilter)="afterFilter($event)">
+</app-filter-car>
+
+
+<!--弹窗-->
+<hq-modal [hqTitle]="titleOfChehang" [hqShow]="showModal" (hqCloseModal)="showModal = $event;" [hqTop]="50">
+  <div class="chehang">
+    <div class="chehang-item" *ngFor="let company of save_company">
+      <div class="chehang-pic"><img src="{{company.img}}" alt="{{company.id}}" /></div>
+      <div class="result_num">{{company.count}}个结果</div>
+    </div>
+  </div>
+</hq-modal>
+
+
+
+<!--首页搜索表单弹窗-->
+<hq-overlay [hqAcitve]="showSearchForm" (hqClick)="controlSearchForm('close')"></hq-overlay>
+<div id="searchFormDialog" [class.active]="showSearchForm">
+  <app-search-car [inCarlist]="true" [isDialog]="true" (_emitClose)="updateSearchResult($event)"></app-search-car>
+</div>
+
+
+<!--加载中-->
+<hq-spin [hqShow]="showLoading"></hq-spin>

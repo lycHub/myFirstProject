@@ -1,0 +1,44 @@
+@import "../../../../styles";
+.hq-collapse{
+  .hq-collapse-header{
+    padding: 10px 0;
+    .hq-collapse-header-wrap{
+      @include flex-box(null,space-between,center,null);
+      @include font(inherit,inherit);
+      @include setWidth(95%);
+    }
+    i{
+      font-size: 18px;
+      @include transit(transform);
+    }
+  }
+
+  .hq-collapse-content-wrap{
+    @include setWidth(95%);
+    height:0;
+    overflow: hidden;
+    @include transit();
+  }
+}
+
+
+.hq-collapse {
+  .hq-collapse-header.active{
+    i{
+      transform: rotate(90deg);
+    }
+  }
+
+  .hq-collapse-content-wrap.active{
+    padding: 10px 0;
+    height:auto;
+  }
+}
+
+
+.hq-collapse {
+  .hq-collapse-header.disabled{
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+}

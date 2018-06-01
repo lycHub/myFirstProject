@@ -1,0 +1,54 @@
+@import "../../styles";
+#main{
+  .search-car{
+    @include setWidth(95%);
+    position: relative;
+    box-shadow: 0 0 5px #D5D6D7;
+    border-radius: 5px;
+    padding-bottom:25px;
+    background-color: #fff;
+    margin-top: -40px;
+    z-index: 1;
+
+    .wrapper{
+      @include setWidth(91.5%);
+      padding-top: 15px;
+
+      .tip{
+        width: 59%;
+        margin-top: 30px;
+      }
+    }
+  }
+
+
+  .guide-entrance{
+    @include flex-box(null,space-around,center,null);
+    padding: 15px 0;
+    margin: {
+      top:16px;
+      bottom: 26px;
+    };
+    background-color: #fff;
+
+    .txt{
+      h4{
+        font-size: 14px;
+        margin-bottom: 5px;
+      }
+    }
+
+    .btn{
+      width: 18%;
+      max-width: 90px;
+    }
+  }
+
+  >a{
+    color: #999;
+    cursor: pointer;
+    display: block;
+    margin: 5px 0 20px 0;
+    text-align: center;
+  }
+}

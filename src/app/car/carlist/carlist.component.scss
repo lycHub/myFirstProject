@@ -1,0 +1,175 @@
+@import "../../../styles";
+
+#search-result{
+
+  .wrapper-fixed{
+    position: fixed;
+    width: 100%;
+    max-width: 1200px;
+    top:0;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    z-index: 1;
+    box-shadow: 0 2px 3px #ebebec;
+    .wrapper{
+      .che-hang{
+        position: relative;
+        height:40px;
+        color: #fff;
+        line-height: 40px;
+        text-indent: 10px;
+        background-color: rgba(40, 171, 227, 1);
+        cursor: pointer;
+        i{
+          position: absolute;
+          right: 12px;
+          color: #fff;
+          font-size: 35px;
+          font-weight: bold;
+          font-family: "宋体";
+        }
+      }
+
+      .filter{
+        display: -webkit-flex;
+        display: flex;
+        height:50px;
+        background-color: #fff;
+        ul{
+          @include flex-box(null, space-around, center, null);
+          width: 81.5%;
+          li{
+            width: 15.8%;
+            height:32px;
+            line-height: 32px;
+            text-align: center;
+            background-color: #f2f2f2;
+            cursor: pointer;
+            @include transit();
+          }
+          li.active{
+            color:#fff;
+            background-color: #28abe3;
+          }
+        }
+
+        .btn{
+          @include flex-box(null, center, center, null);
+          width: 18.5%;
+          i{
+            @include icon(30px, 30px, '../../../assets/car/test.png', -5px bottom);
+            margin-right: 3px;
+          }
+          span{
+            color: #000;
+          }
+        }
+      }
+    }
+  }
+
+
+  .ads{
+    color: #ff2d47;
+    font-size: 14px;
+    margin-bottom: 10px;
+    text-indent: 30px;
+    background: url(../../../assets/car/carlist/laba.png) no-repeat;
+    background-size: contain;
+    background-position: 5px;
+    cursor: pointer;
+
+    @media screen and (min-width:375px){
+      text-indent: 40px;
+      background-position: 15px;
+    }
+  }
+
+  .carlist{
+    // margin-top: 165px;
+
+    .car-item{
+      position: relative;
+      padding-top: 15px;
+      background-color: #fff;
+      margin-bottom: 10px;
+      @include box-shadow(0 2px 5px #bcbcbc);
+
+      .jiaobiao{
+        position: absolute;
+        width: 70px;
+        height:70px;
+        top:0;
+        background: url(../../../assets/car/carlist/jiaobiao.png) no-repeat;
+        background-size: contain;
+      }
+
+      .wrapper{
+        @include setWidth(92%);
+
+        .overview{
+          @include flex-box(null,space-between,center,null);
+          cursor: pointer;
+          padding-bottom: 15px;
+          border-bottom: 1px solid #c9c9c9;
+
+          .cover-pic{
+            width: 34.8%;
+          }
+          .featrue{
+            width: 62%;
+
+            .down{
+              margin-top: 5px;
+              .price{
+                b{
+                  @include font(19px,#d01c31,bold);
+                }
+                span{
+                  color: #d01c31;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
+/*弹窗内样式*/
+hq-modal .chehang{
+  @include setWidth(67.7%);
+  margin-top: 50px;
+
+  .chehang-item{
+    margin-bottom: 65px;
+    &:last-of-type{
+      margin-bottom: 40px;
+    }
+
+    .result_num{
+      @include font(18px, #1fda9a);
+      text-align: center;
+    }
+  }
+}
+
+
+#searchFormDialog{
+  @include setWidth(95%);
+  @include transit(top);
+  background-color: #fff;
+  position: fixed;
+  top:-430px;
+  left: 50%;
+  margin-left: -47.5%;
+  z-index: 2;
+}
+
+#searchFormDialog.active{
+  top:100px;
+}

@@ -1,0 +1,37 @@
+<div class="select-city">
+  <div class="beginCity">
+    <div class="selected" (click)="openCityList('begin')">
+      <div class="label">取车城市</div>
+      <div class="city-name">
+        <div class="cn">{{currentCity.begin.name}}</div>
+        <div class="en">{{currentCity.begin.name_native}}</div>
+      </div>
+    </div>
+    <div class="right-arrow"><img src="../../../assets/main/right-arrow.png" alt="图标"></div>
+  </div>
+
+  <div class="endCity">
+    <div class="selected" (click)="openCityList('end')">
+      <div class="label">还车城市</div>
+      <div class="city-name">
+        <div class="cn">{{currentCity.end.name}}</div>
+        <div class="en">{{currentCity.end.name_native}}</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!--城市列表-->
+<app-area-list
+  [inCountry]="inCountry"
+  [save_country]="save_country"
+  [returnCityList]="showCityList"
+  [hqVisible]="_visible"
+  (cityData)="selectedCity($event)"
+  (closePanel)="_visible = $event;"
+  [selectedCountry]="selectedCountry"
+  [alreadSelectedCity]="currentCity"
+  [historyCity]="historyCity"
+  [dataType]="dataType">
+</app-area-list>

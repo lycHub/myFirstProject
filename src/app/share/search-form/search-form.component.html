@@ -1,0 +1,16 @@
+<form [formGroup]="formModel">
+  <!--选城市-->
+  <app-select-area formControlName="selectedArea" [all_area_data]="all_area_data" [search_car_data]="search_car_data" [inCountry]="inCountry" [area_info]="form_data.area_info"></app-select-area>
+
+  <!--选日期-->
+  <app-select-date formControlName="selectedDate" [inCountry]="inCountry" [startValidate]= "startValidate" [timesValue]="timesValue" (selectedTime)="timesValue = $event;"></app-select-date>
+
+  <div class="submit">
+    <div class="wrapper">
+      <button (click)="onSubmit($event)">开启房车之旅<span>&gt;</span></button>
+    </div>
+  </div>
+</form>
+
+<!--加载中-->
+<hq-spin [hqShow]="showLoading"></hq-spin>

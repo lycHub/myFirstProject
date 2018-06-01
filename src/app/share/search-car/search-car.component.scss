@@ -1,0 +1,31 @@
+@import "../../../styles";
+:host(.width) {
+  display: block;
+  padding: 15px 0 35px 0;
+  @include setWidth(95%);
+}
+
+/*.title{
+  border-bottom: 1px solid #28ABE3;
+  h2{
+    @include font(16px, #28ABE3, 700);
+    text-align: center;
+    width: 60px;
+    margin: 0 auto;
+    padding-bottom: 10px;
+    border-bottom: 3px solid #28abe3;
+    @media screen and(min-width: 480px){
+      padding-bottom: 20px;
+      font-size: 18px;
+      border-bottom-width: 5px;
+    }
+  }
+}
+
+.advertise{
+  margin: 15px 0;
+  span{
+    color: #AEAEAE;
+  }
+}*/
+
